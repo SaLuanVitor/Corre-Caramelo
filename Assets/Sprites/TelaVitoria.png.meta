@@ -1,10 +1,10 @@
 fileFormatVersion: 2
-guid: d1ce41e0128d11e40bf43f80c7605bda
+guid: 89fa665269a21404ca617c1e7fe51fa2
 TextureImporter:
   internalIDToNameTable:
   - first:
-      213: -343158364651804220
-    second: alienGreen_round_0
+      213: 8465449008968339602
+    second: TelaVitoria_0
   externalObjects: {}
   serializedVersion: 13
   mipmaps:
@@ -113,13 +113,13 @@ TextureImporter:
     serializedVersion: 2
     sprites:
     - serializedVersion: 2
-      name: alienGreen_round_0
+      name: TelaVitoria_0
       rect:
         serializedVersion: 2
         x: 0
         y: 0
-        width: 70
-        height: 70
+        width: 941
+        height: 1672
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -128,8 +128,8 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: -1
       bones: []
-      spriteID: 4c9a935194bdc3bf0800000000000000
-      internalID: -343158364651804220
+      spriteID: 2909db395015b7570800000000000000
+      internalID: 8465449008968339602
       vertices: []
       indices: 
       edges: []
@@ -148,7 +148,7 @@ TextureImporter:
     spriteCustomMetadata:
       entries: []
     nameFileIdTable:
-      alienGreen_round_0: -343158364651804220
+      TelaVitoria_0: 8465449008968339602
   mipmapLimitGroupName: 
   pSDRemoveMatte: 0
   userData: 
