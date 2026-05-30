@@ -14,6 +14,12 @@ public class LevelController : MonoBehaviour
     public GameObject win;       
     public GameObject gameOver;  
 
+    [Header("Configurações de Áudio")]
+    public AudioClip somVitoria;
+    public AudioClip somDerrota;
+    [Range(0f, 1f)]
+    public float volumeDosSons = 0.8f; // Barrinha de volume no Unity
+
     [Header("Configurações do Jogo")]
     public float tempoTotal = 60f;
 
@@ -78,8 +84,23 @@ public class LevelController : MonoBehaviour
     {
         isGameOver = true;
         Time.timeScale = 0; 
-        if (vitoria && win != null) win.SetActive(true);
-        else if (gameOver != null) gameOver.SetActive(true);
+        
+        if (vitoria) 
+        {
+            // Toca o som de vitória se ele existir
+            if (somVitoria != null)
+                AudioSource.PlayClipAtPoint(somVitoria, Camera.main.transform.position, volumeDosSons);
+                
+            if (win != null) win.SetActive(true);
+        }
+        else 
+        {
+            // Toca o som de derrota se ele existir
+            if (somDerrota != null)
+                AudioSource.PlayClipAtPoint(somDerrota, Camera.main.transform.position, volumeDosSons);
+                
+            if (gameOver != null) gameOver.SetActive(true);
+        }
     }
 
     public void ProximaFase() {

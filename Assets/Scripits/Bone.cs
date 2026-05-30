@@ -2,13 +2,22 @@ using UnityEngine;
 
 public class ItemColetavel : MonoBehaviour
 {
+    public AudioClip somDeColeta;
+    
+    // Isso cria uma barrinha de volume no Unity que vai de 0 a 1!
+    [Range(0f, 1f)] 
+    public float volumeDoSom = 0.5f; 
+
     private void OnTriggerEnter2D(Collider2D collision)
     {
-        // Esse é o alarme! Ele vai escrever no Console quem encostou no osso.
-        Debug.Log("O petisco sentiu um toque de: " + collision.gameObject.name + " | Tag: " + collision.gameObject.tag);
-
         if (collision.CompareTag("Player"))
         {
+            if (somDeColeta != null)
+            {
+                // Agora ele usa a variável do volume em vez do "1f" fixo
+                AudioSource.PlayClipAtPoint(somDeColeta, Camera.main.transform.position, volumeDoSom); 
+            }
+
             LevelController.ColetarOsso(); 
             Destroy(gameObject); 
         }

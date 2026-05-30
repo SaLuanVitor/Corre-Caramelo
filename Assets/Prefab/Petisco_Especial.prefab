@@ -12,9 +12,9 @@ GameObject:
   - component: {fileID: 4064653589106160126}
   - component: {fileID: 3205212976246595528}
   - component: {fileID: 2854981441827577699}
-  - component: {fileID: 7182410358960931145}
+  - component: {fileID: -9194652345639588988}
   m_Layer: 0
-  m_Name: Petisco_0
+  m_Name: Petisco_Especial
   m_TagString: Petisco
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -85,7 +85,7 @@ SpriteRenderer:
   m_SortingOrder: 5
   m_MaskInteraction: 0
   m_Sprite: {fileID: 5187535346082287335, guid: ef0a86139d832dc41b0c0f4d8d3e0c44, type: 3}
-  m_Color: {r: 1, g: 1, b: 1, a: 1}
+  m_Color: {r: 0.9716981, g: 0.5189779, b: 0.09625311, a: 1}
   m_FlipX: 0
   m_FlipY: 0
   m_DrawMode: 0
@@ -153,7 +153,7 @@ BoxCollider2D:
   m_AutoTiling: 0
   m_Size: {x: 2.9, y: 1.63}
   m_EdgeRadius: 0
---- !u!114 &7182410358960931145
+--- !u!114 &-9194652345639588988
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -162,8 +162,10 @@ MonoBehaviour:
   m_GameObject: {fileID: 2009158531803911167}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 43ddeb411f32e4e4ab9c8e940d2894fe, type: 3}
+  m_Script: {fileID: 11500000, guid: 2ebba6552605c0e4ebe41bf5aa7d1fec, type: 3}
   m_Name: 
-  m_EditorClassIdentifier: Assembly-CSharp::ItemColetavel
+  m_EditorClassIdentifier: Assembly-CSharp::PetiscoEspecial
+  bonusDeVelocidade: 10
+  tempoDeEfeito: 1.5
   somDeColeta: {fileID: 8300000, guid: 97fe96151f870d24fb41953043fbc349, type: 3}
   volumeDoSom: 0.1

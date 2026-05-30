@@ -4,21 +4,30 @@ public class Perseguidor : MonoBehaviour
 {
     public float velocidade = 2.5f; 
     private Transform player;
+    private Rigidbody2D rb2d; // Chama a física do inimigo
 
     void Start()
     {
+        // Acha o jogador
         GameObject objPlayer = GameObject.FindGameObjectWithTag("Player");
         if (objPlayer != null) player = objPlayer.transform;
+
+        // Pega o componente de física do próprio inimigo
+        rb2d = GetComponent<Rigidbody2D>();
     }
 
-    void Update()
+    // Usamos FixedUpdate no lugar do Update sempre que vamos mexer com física pesada (batidas)
+    void FixedUpdate()
     {
-        // Só move se o jogo não estiver pausado (GameOver/Win)
         if (player != null && Time.timeScale > 0)
         {
-            transform.position = Vector2.MoveTowards(transform.position, player.position, velocidade * Time.deltaTime);
+            // Calcula a direção que o inimigo deve ir
+            Vector2 direcao = (player.position - transform.position).normalized;
             
-            // Inverte o sprite baseado na direção
+            // Move o inimigo usando a FÍSICA (Isso impede que eles entrem um no outro!)
+            rb2d.MovePosition(rb2d.position + direcao * velocidade * Time.fixedDeltaTime);
+            
+            // Inverte o desenho para olhar para o lado certo
             if (player.position.x < transform.position.x)
                 transform.localScale = new Vector3(1, 1, 1); 
             else

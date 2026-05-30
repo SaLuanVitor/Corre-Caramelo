@@ -48,6 +48,30 @@ public class Player : MonoBehaviour
         movement = inputValue.Get<Vector2>();
     }
     
-    // O sistema de colisão duplicado com o "Petisco" foi totalmente removido daqui
-    // para acabar com o bug do score contar duplo.
+    // Função nova: Recebe o bônus e soma na velocidade atual
+    public void AumentarVelocidade(float bonus)
+    {
+        speed += bonus;
+    }
+
+    // Essa biblioteca precisa estar declarada lá na primeira linha do script, 
+    // mas se já tiver "using System.Collections;", não se preocupe.
+
+    public void AtivarBonusVelocidade(float bonus, float tempo)
+    {
+        // Inicia o cronômetro
+        StartCoroutine(RotinaVelocidade(bonus, tempo));
+    }
+
+    private System.Collections.IEnumerator RotinaVelocidade(float bonus, float tempo)
+    {
+        // 1. Aumenta a velocidade
+        speed += bonus; 
+        
+        // 2. Espera os segundos que você escolher
+        yield return new WaitForSeconds(tempo); 
+        
+        // 3. Tira o bônus, voltando ao normal
+        speed -= bonus; 
+    }
 }
