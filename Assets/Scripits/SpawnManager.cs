@@ -1,9 +1,10 @@
+// Nome do arquivo: SpawnManager.cs
 using UnityEngine;
 
 public class SpawnManager : MonoBehaviour
 {
     public GameObject petiscoPrefab; 
-    public float distanciaMinima = 2.5f;
+    public float distanciaMinima = 2.0f; // Ajuste no Inspector se precisar de mais espaço
     public float xMin = -15f, xMax = 15f, yMin = -8f, yMax = 8f;
 
     void Start()
@@ -24,13 +25,28 @@ public class SpawnManager : MonoBehaviour
         for (int i = 0; i < 100; i++) 
         {
             Vector3 pos = new Vector3(Random.Range(xMin, xMax), Random.Range(yMin, yMax), 0);
-            if (Physics2D.OverlapCircle(pos, distanciaMinima) == null)
+            
+            // Analisa o espaço ao redor ignorando colisores que não sejam petiscos
+            Collider2D[] colisoresProximos = Physics2D.OverlapCircleAll(pos, distanciaMinima);
+            bool espacoLivre = true;
+
+            foreach (Collider2D colisor in colisoresProximos)
+            {
+                if (colisor.CompareTag("Petisco"))
+                {
+                    espacoLivre = false;
+                    break; 
+                }
+            }
+
+            if (espacoLivre)
             {
                 Instantiate(petiscoPrefab, pos, Quaternion.identity);
                 return; 
             }
         }
-        // Fallback: se não achar espaço, cria em um lugar aleatório para não faltar osso
+        
+        // Se o mapa estiver muito cheio, instancia mesmo assim para não faltar itens no objetivo
         Instantiate(petiscoPrefab, new Vector3(Random.Range(xMin, xMax), Random.Range(yMin, yMax), 0), Quaternion.identity);
     }
 }

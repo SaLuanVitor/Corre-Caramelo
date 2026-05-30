@@ -1,3 +1,4 @@
+// Nome do arquivo: LevelController.cs
 using UnityEngine;
 using TMPro; 
 using UnityEngine.SceneManagement;
@@ -25,14 +26,20 @@ public class LevelController : MonoBehaviour
     private void Awake()
     {
         instance = this;
-        // Carrega o nível salvo (se for a primeira vez, inicia no 1)
+    }
+
+    private void Start()
+    {
+        // Garante a leitura correta do progresso das fases
         nivelAtual = PlayerPrefs.GetInt("NivelAtual", 1);
         
-        // Regra: Fase 1 = 5, Fase 2 = 10, Fase 3 = 15...
+        // Regra exata: Fase 1 = 5, Fase 2 = 10, Fase 3 = 15...
         objetivoAtual = nivelAtual * 5;
         
+        ossosColetados = 0;
         timer = tempoTotal;
         Time.timeScale = 1; 
+        
         AtualizarUI();
     }
     
@@ -75,9 +82,7 @@ public class LevelController : MonoBehaviour
         else if (gameOver != null) gameOver.SetActive(true);
     }
 
-    // --- FUNÇÕES DOS BOTÕES ---
     public void ProximaFase() {
-        // Aumenta o nível na memória antes de recarregar
         PlayerPrefs.SetInt("NivelAtual", nivelAtual + 1);
         Time.timeScale = 1;
         SceneManager.LoadScene(SceneManager.GetActiveScene().name);
@@ -89,7 +94,7 @@ public class LevelController : MonoBehaviour
     }
 
     public void VoltarAoMenu() {
-        PlayerPrefs.SetInt("NivelAtual", 1); // Reseta a dificuldade ao sair
+        PlayerPrefs.SetInt("NivelAtual", 1); 
         Time.timeScale = 1;
         SceneManager.LoadScene("Menu");
     }

@@ -1,14 +1,14 @@
+// Nome do arquivo: Player.cs
 using UnityEngine;
 using UnityEngine.InputSystem;
 
 public class Player : MonoBehaviour
 {
-    public float speed = 10f; // Aumentei um pouco a velocidade para o mapa grande
+    public float speed = 10f; 
     private Vector2 movement;
     private Rigidbody2D rb2d;
     private Animator anim;
 
-    // NOVOS LIMITES: Ajustados para o tamanho da sua grama (Size 15 da Camera)
     private float xLimit = 22f; 
     private float yLimit = 13f; 
 
@@ -28,7 +28,6 @@ public class Player : MonoBehaviour
     {
         rb2d.linearVelocity = movement * speed;
 
-        // Agora o cachorro consegue explorar todo o cenário de grama
         Vector3 pos = transform.position;
         pos.x = Mathf.Clamp(pos.x, -xLimit, xLimit);
         pos.y = Mathf.Clamp(pos.y, -yLimit, yLimit);
@@ -48,14 +47,7 @@ public class Player : MonoBehaviour
     {
         movement = inputValue.Get<Vector2>();
     }
-
-    private void OnTriggerEnter2D(Collider2D other)
-    {
-        if (other.CompareTag("Petisco"))
-        {
-            other.gameObject.SetActive(false);
-            LevelController.ColetarOsso();
-            Debug.Log("Petisco coletado!");
-        }
-    }
+    
+    // O sistema de colisão duplicado com o "Petisco" foi totalmente removido daqui
+    // para acabar com o bug do score contar duplo.
 }
