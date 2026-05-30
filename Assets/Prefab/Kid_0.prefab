@@ -195,6 +195,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::Perseguidor
   velocidade: 6
+  tamanhoDoInimigo: 1.5
+  raioDeVisao: 2
+  forcaDeSeparacao: 3
 --- !u!95 &5910542676551212918
 Animator:
   serializedVersion: 7

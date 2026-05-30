@@ -1,7 +1,7 @@
-// Nome do arquivo: LevelController.cs
 using UnityEngine;
 using TMPro; 
 using UnityEngine.SceneManagement;
+using UnityEngine.UI; // ESSA LINHA É OBRIGATÓRIA PARA O QR CODE FUNCIONAR
 
 public class LevelController : MonoBehaviour 
 {
@@ -14,11 +14,15 @@ public class LevelController : MonoBehaviour
     public GameObject win;       
     public GameObject gameOver;  
 
+    [Header("Configurações de QR Code")]
+    public RawImage telaDoQRCode; // Onde a imagem vai aparecer
+    public Texture2D[] listaDeQRCodes; // Lista com os seus QR Codes
+
     [Header("Configurações de Áudio")]
     public AudioClip somVitoria;
     public AudioClip somDerrota;
     [Range(0f, 1f)]
-    public float volumeDosSons = 0.8f; // Barrinha de volume no Unity
+    public float volumeDosSons = 0.8f; 
 
     [Header("Configurações do Jogo")]
     public float tempoTotal = 60f;
@@ -36,16 +40,11 @@ public class LevelController : MonoBehaviour
 
     private void Start()
     {
-        // Garante a leitura correta do progresso das fases
         nivelAtual = PlayerPrefs.GetInt("NivelAtual", 1);
-        
-        // Regra exata: Fase 1 = 5, Fase 2 = 10, Fase 3 = 15...
         objetivoAtual = nivelAtual * 5;
-        
         ossosColetados = 0;
         timer = tempoTotal;
         Time.timeScale = 1; 
-        
         AtualizarUI();
     }
     
@@ -87,7 +86,22 @@ public class LevelController : MonoBehaviour
         
         if (vitoria) 
         {
-            // Toca o som de vitória se ele existir
+            // --- CÓDIGO DO QR CODE ---
+            if (telaDoQRCode != null && listaDeQRCodes.Length > 0)
+            {
+                int indiceDaFase = nivelAtual - 1; // Fase 1 usa a imagem 0, Fase 2 usa a imagem 1...
+                
+                if (indiceDaFase < listaDeQRCodes.Length)
+                {
+                    telaDoQRCode.texture = listaDeQRCodes[indiceDaFase];
+                    telaDoQRCode.gameObject.SetActive(true);
+                }
+                else
+                {
+                    telaDoQRCode.gameObject.SetActive(false); // Esconde se não tiver QR Code para essa fase
+                }
+            }
+
             if (somVitoria != null)
                 AudioSource.PlayClipAtPoint(somVitoria, Camera.main.transform.position, volumeDosSons);
                 
@@ -95,7 +109,6 @@ public class LevelController : MonoBehaviour
         }
         else 
         {
-            // Toca o som de derrota se ele existir
             if (somDerrota != null)
                 AudioSource.PlayClipAtPoint(somDerrota, Camera.main.transform.position, volumeDosSons);
                 
