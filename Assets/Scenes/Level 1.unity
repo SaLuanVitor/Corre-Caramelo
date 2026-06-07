@@ -1054,12 +1054,10 @@ MonoBehaviour:
   levelText: {fileID: 0}
   win: {fileID: 0}
   gameOver: {fileID: 0}
+  botaoProximaFase: {fileID: 0}
+  botaoReiniciar: {fileID: 0}
   telaDoQRCode: {fileID: 0}
   listaDeQRCodes: []
-  somVitoria: {fileID: 0}
-  somDerrota: {fileID: 0}
-  volumeDosSons: 0.8
-  tempoTotal: 60
 --- !u!114 &616149135
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -3834,12 +3832,10 @@ MonoBehaviour:
   levelText: {fileID: 0}
   win: {fileID: 2091674729}
   gameOver: {fileID: 138055583}
+  botaoProximaFase: {fileID: 1053094848}
+  botaoReiniciar: {fileID: 85809046}
   telaDoQRCode: {fileID: 0}
   listaDeQRCodes: []
-  somVitoria: {fileID: 8300000, guid: da6d7e7c9e865e64c887f08bd497d6d0, type: 3}
-  somDerrota: {fileID: 8300000, guid: dd86c853b9331eb4881583d59bef3ac4, type: 3}
-  volumeDosSons: 0.8
-  tempoTotal: 60
 --- !u!4 &2046098059
 Transform:
   m_ObjectHideFlags: 0

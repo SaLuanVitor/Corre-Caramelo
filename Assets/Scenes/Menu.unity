@@ -1386,6 +1386,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c38dca61450fe7a48a2be38034deab8b, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::JoystickVirtual
+  botaoJogar: {fileID: 1170521}
 --- !u!1 &1496795395
 GameObject:
   m_ObjectHideFlags: 0
