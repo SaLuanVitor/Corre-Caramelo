@@ -18,6 +18,10 @@ public class LevelController : MonoBehaviour
     [Header("Configurações de Controle")]
     public GameObject botaoProximaFase;
     public GameObject botaoReiniciar;   
+    
+    // NOVO: Arraste o GameObject do seu Joystick aqui no Inspector
+    [Header("Configurações do Joystick")]
+    public GameObject joystickVirtual; 
 
     [Header("Configurações de QR Code")]
     public RawImage telaDoQRCode; 
@@ -38,13 +42,11 @@ public class LevelController : MonoBehaviour
     private int nivelAtual;
     private bool isGameOver;
     
-    // Novo tocador de áudio que não congela
     private AudioSource tocadorDeAudio;
 
     private void Awake()
     {
         instance = this;
-        // Cria o tocador invisível e manda ele ignorar o pause do jogo
         tocadorDeAudio = gameObject.AddComponent<AudioSource>();
         tocadorDeAudio.ignoreListenerPause = true; 
     }
@@ -111,6 +113,12 @@ public class LevelController : MonoBehaviour
         
         EventSystem.current.SetSelectedGameObject(null); 
         
+        // NOVO: Oculta o joystick assim que o jogo termina (Vitória ou Derrota)
+        if (joystickVirtual != null)
+        {
+            joystickVirtual.SetActive(false);
+        }
+
         if (vitoria) 
         {
             if (telaDoQRCode != null && listaDeQRCodes != null && listaDeQRCodes.Length > 0)
@@ -124,7 +132,6 @@ public class LevelController : MonoBehaviour
                 else telaDoQRCode.gameObject.SetActive(false);
             }
 
-            // Toca o som usando o novo tocador
             if (somVitoria != null) tocadorDeAudio.PlayOneShot(somVitoria, volumeDosSons);
 
             if (win != null) win.SetActive(true);
@@ -132,7 +139,6 @@ public class LevelController : MonoBehaviour
         }
         else 
         {
-            // Toca o som usando o novo tocador
             if (somDerrota != null) tocadorDeAudio.PlayOneShot(somDerrota, volumeDosSons);
 
             if (gameOver != null) gameOver.SetActive(true);
