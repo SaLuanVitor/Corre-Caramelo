@@ -23,6 +23,12 @@ public class LevelController : MonoBehaviour
     public RawImage telaDoQRCode; 
     public Texture2D[] listaDeQRCodes; 
 
+    [Header("Configurações de Áudio")]
+    public AudioClip somVitoria;
+    public AudioClip somDerrota;
+    [Range(0f, 1f)]
+    public float volumeDosSons = 0.8f;
+
     [Header("Configurações do Jogo")]
     public float tempoTotal = 60f;
 
@@ -31,10 +37,16 @@ public class LevelController : MonoBehaviour
     private int objetivoAtual;
     private int nivelAtual;
     private bool isGameOver;
+    
+    // Novo tocador de áudio que não congela
+    private AudioSource tocadorDeAudio;
 
     private void Awake()
     {
         instance = this;
+        // Cria o tocador invisível e manda ele ignorar o pause do jogo
+        tocadorDeAudio = gameObject.AddComponent<AudioSource>();
+        tocadorDeAudio.ignoreListenerPause = true; 
     }
 
     private void Start()
@@ -44,10 +56,11 @@ public class LevelController : MonoBehaviour
         ossosColetados = 0;
         timer = tempoTotal;
         isGameOver = false;
+        
+        AudioListener.pause = false; 
         Time.timeScale = 1; 
         AtualizarUI();
         
-        // Garante que o Caramelo pode andar livremente no início
         EventSystem.current.SetSelectedGameObject(null);
     }
     
@@ -63,7 +76,7 @@ public class LevelController : MonoBehaviour
         }
         else 
         {
-            FinalizarJogo(false); // O tempo acabou, o jogador morre
+            FinalizarJogo(false);
         }
     }
 
@@ -74,7 +87,6 @@ public class LevelController : MonoBehaviour
             instance.ossosColetados++;
             instance.AtualizarUI();
             
-            // Verifica se bateu a meta para ganhar a fase
             if (instance.ossosColetados >= instance.objetivoAtual)
                 instance.FinalizarJogo(true);
         }
@@ -97,12 +109,10 @@ public class LevelController : MonoBehaviour
         isGameOver = true;
         Time.timeScale = 0; 
         
-        // Limpa as seleções para o controle focar nos botões novos
         EventSystem.current.SetSelectedGameObject(null); 
         
         if (vitoria) 
         {
-            // Lógica do QR Code
             if (telaDoQRCode != null && listaDeQRCodes != null && listaDeQRCodes.Length > 0)
             {
                 int indice = nivelAtual - 1; 
@@ -114,17 +124,38 @@ public class LevelController : MonoBehaviour
                 else telaDoQRCode.gameObject.SetActive(false);
             }
 
+            // Toca o som usando o novo tocador
+            if (somVitoria != null) tocadorDeAudio.PlayOneShot(somVitoria, volumeDosSons);
+
             if (win != null) win.SetActive(true);
             if (botaoProximaFase != null) EventSystem.current.SetSelectedGameObject(botaoProximaFase);
         }
         else 
         {
+            // Toca o som usando o novo tocador
+            if (somDerrota != null) tocadorDeAudio.PlayOneShot(somDerrota, volumeDosSons);
+
             if (gameOver != null) gameOver.SetActive(true);
             if (botaoReiniciar != null) EventSystem.current.SetSelectedGameObject(botaoReiniciar);
         }
     }
 
-    public void ProximaFase() { Time.timeScale = 1; SceneManager.LoadScene(SceneManager.GetActiveScene().name); }
-    public void TentarNovamente() { Time.timeScale = 1; SceneManager.LoadScene(SceneManager.GetActiveScene().name); }
-    public void VoltarAoMenu() { Time.timeScale = 1; SceneManager.LoadScene("Menu"); }
+    public void ProximaFase() 
+    { 
+        PlayerPrefs.SetInt("NivelAtual", nivelAtual + 1); 
+        Time.timeScale = 1; 
+        SceneManager.LoadScene(SceneManager.GetActiveScene().name); 
+    }
+
+    public void TentarNovamente() 
+    { 
+        Time.timeScale = 1; 
+        SceneManager.LoadScene(SceneManager.GetActiveScene().name); 
+    }
+
+    public void VoltarAoMenu() 
+    { 
+        Time.timeScale = 1; 
+        SceneManager.LoadScene("Menu"); 
+    }
 }

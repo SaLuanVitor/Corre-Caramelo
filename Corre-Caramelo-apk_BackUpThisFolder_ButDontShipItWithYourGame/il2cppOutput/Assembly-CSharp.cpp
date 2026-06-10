@@ -55,6 +55,7 @@ struct WordWrapStateU5BU5D_t473D59C9DBCC949CE72EF1EB471CBA152A6CEAC9;
 struct TextProcessingElementU5BU5D_tC3E97D1672C8DB6E1F91DB2C0987D0ED9A2E7113;
 struct Animator_t8A52E42AE54F76681838FE9E632683EF3952E883;
 struct AudioClip_t5D272C4EB4F2D3ED49F1C346DEA373CF6D585F20;
+struct AudioSource_t871AC2272F896738252F04EE949AEF5B241D3299;
 struct BaseEventData_tE03A848325C0AE8E76C6CA15FD86395EBF83364F;
 struct BaseInputModule_tF3B7C22AF1419B2AC9ECE6589357DC1B88ED96B1;
 struct BaseRaycaster_t7DC8158FD3CA0193455344379DD5FF7CD5F1F832;
@@ -173,6 +174,7 @@ IL2CPP_EXTERN_C const RuntimeMethod* Component_GetComponent_TisPerseguidor_t7E40
 IL2CPP_EXTERN_C const RuntimeMethod* Component_GetComponent_TisPlayer_tF98BD09D3495D2FF1922E5D34866AEAC6AE2DF74_m8F699A0050226AECAE02DCAAB9B8B34D1D602CB3_RuntimeMethod_var;
 IL2CPP_EXTERN_C const RuntimeMethod* Component_GetComponent_TisRectTransform_t6C5DA5E41A89E0F488B001E45E58963480E543A5_m0640480E7E38BB88B0D1F6AD59E697C8EE6AAFA4_RuntimeMethod_var;
 IL2CPP_EXTERN_C const RuntimeMethod* Component_GetComponent_TisRigidbody2D_tBEBE9523CF4448544085AF46BF7E10AA499F320F_m0712B7A9DBBAE2C319B4B03394E7731B86FACBF2_RuntimeMethod_var;
+IL2CPP_EXTERN_C const RuntimeMethod* GameObject_AddComponent_TisAudioSource_t871AC2272F896738252F04EE949AEF5B241D3299_m0E8EFDB9B3D8DF1ADE10C56D3168A9C1BA19BF14_RuntimeMethod_var;
 IL2CPP_EXTERN_C const RuntimeMethod* InputValue_Get_TisVector2_t1FD6F485C871E832B347AB2DC8CBA08B739D8DF7_mBA56AD2906D3B6F2B87F3DE248CB62E1AA4D2293_RuntimeMethod_var;
 IL2CPP_EXTERN_C const RuntimeMethod* Object_Instantiate_TisGameObject_t76FEDD663AB33C991A9C9A23129337651094216F_m831D2F71DF2AA6C93AFDFEFA04CF2CFC5FBBCDB4_RuntimeMethod_var;
 IL2CPP_EXTERN_C const RuntimeMethod* U3CRotinaVelocidadeU3Ed__11_System_Collections_IEnumerator_Reset_m5B3072FC8F3A6131C404193E216CCAC993129333_RuntimeMethod_var;
@@ -1275,6 +1277,9 @@ struct TMP_TextProcessingStack_1_t2DDA00FFC64AF6E3AFD475AB2086D16C34787E0F
 struct Animator_t8A52E42AE54F76681838FE9E632683EF3952E883  : public Behaviour_t01970CFBBA658497AE30F311C447DB0440BAB7FA
 {
 };
+struct AudioBehaviour_t2DC0BEF7B020C952F3D2DA5AAAC88501C7EEB941  : public Behaviour_t01970CFBBA658497AE30F311C447DB0440BAB7FA
+{
+};
 struct Camera_tA92CC927D7439999BC82DBEDC0AA45B470F9E184  : public Behaviour_t01970CFBBA658497AE30F311C447DB0440BAB7FA
 {
 	uint32_t ___m_NonSerializedVersion;
@@ -1287,6 +1292,9 @@ struct MonoBehaviour_t532A11E69716D348D8AA7F854AFCBFCB8AD17F71  : public Behavio
 	CancellationTokenSource_tAAE1E0033BCFC233801F8CB4CED5C852B350CB7B* ___m_CancellationTokenSource;
 };
 struct RectTransform_t6C5DA5E41A89E0F488B001E45E58963480E543A5  : public Transform_tB27202C6F4E36D225EE28A13E4D662BF99785DB1
+{
+};
+struct AudioSource_t871AC2272F896738252F04EE949AEF5B241D3299  : public AudioBehaviour_t2DC0BEF7B020C952F3D2DA5AAAC88501C7EEB941
 {
 };
 struct EnemySpawner_tBA941A38B8AC67CF1D99E92E3BB0CC9C7A14A177  : public MonoBehaviour_t532A11E69716D348D8AA7F854AFCBFCB8AD17F71
@@ -1327,12 +1335,16 @@ struct LevelController_t509E7CB90C17A4D233A7564A3857D3FE82ED1640  : public MonoB
 	GameObject_t76FEDD663AB33C991A9C9A23129337651094216F* ___botaoReiniciar;
 	RawImage_tFF12F7DB574FBDC1863CF607C7A12A5D9F8D6179* ___telaDoQRCode;
 	Texture2DU5BU5D_t05332F1E3F7D4493E304C702201F9BE4F9236191* ___listaDeQRCodes;
+	AudioClip_t5D272C4EB4F2D3ED49F1C346DEA373CF6D585F20* ___somVitoria;
+	AudioClip_t5D272C4EB4F2D3ED49F1C346DEA373CF6D585F20* ___somDerrota;
+	float ___volumeDosSons;
 	float ___tempoTotal;
 	float ___timer;
 	int32_t ___ossosColetados;
 	int32_t ___objetivoAtual;
 	int32_t ___nivelAtual;
 	bool ___isGameOver;
+	AudioSource_t871AC2272F896738252F04EE949AEF5B241D3299* ___tocadorDeAudio;
 };
 struct LinkManager_t7D48E68D127A7C6C28AFEBE37F58F15DDA775E65  : public MonoBehaviour_t532A11E69716D348D8AA7F854AFCBFCB8AD17F71
 {
@@ -1933,6 +1945,7 @@ struct ByteU5BU5D_tA6237BF417AE52AD70CFB4EF24A7A82613DF9031  : public RuntimeArr
 
 IL2CPP_EXTERN_C IL2CPP_METHOD_ATTR RuntimeObject* Object_Instantiate_TisRuntimeObject_m249A6BA4F2F19C2D3CE217D4D31847DF0EF03EFE_gshared (RuntimeObject* ___0_original, Vector3_t24C512C7B96BBABAD472002D0BA2BDA40A5A80B2 ___1_position, Quaternion_tDA59F214EF07D7700B26E40E562F267AF7306974 ___2_rotation, const RuntimeMethod* method) ;
 IL2CPP_EXTERN_C IL2CPP_METHOD_ATTR RuntimeObject* Component_GetComponent_TisRuntimeObject_m7181F81CAEC2CF53F5D2BC79B7425C16E1F80D33_gshared (Component_t39FBE53E5EFCF4409111FB22C15FF73717632EC3* __this, const RuntimeMethod* method) ;
+IL2CPP_EXTERN_C IL2CPP_METHOD_ATTR RuntimeObject* GameObject_AddComponent_TisRuntimeObject_m69B93700FACCF372F5753371C6E8FB780800B824_gshared (GameObject_t76FEDD663AB33C991A9C9A23129337651094216F* __this, const RuntimeMethod* method) ;
 IL2CPP_EXTERN_C IL2CPP_METHOD_ATTR Vector2_t1FD6F485C871E832B347AB2DC8CBA08B739D8DF7 InputValue_Get_TisVector2_t1FD6F485C871E832B347AB2DC8CBA08B739D8DF7_mBA56AD2906D3B6F2B87F3DE248CB62E1AA4D2293_gshared (InputValue_t4F053958518BDF6FD85C55F31B0597C9521B4231* __this, const RuntimeMethod* method) ;
 
 IL2CPP_EXTERN_C IL2CPP_METHOD_ATTR bool Component_CompareTag_mE6F8897E84F12DF12D302FFC4D58204D51096FC5 (Component_t39FBE53E5EFCF4409111FB22C15FF73717632EC3* __this, String_t* ___0_tag, const RuntimeMethod* method) ;
@@ -1980,6 +1993,12 @@ IL2CPP_MANAGED_FORCE_INLINE IL2CPP_METHOD_ATTR Vector2_t1FD6F485C871E832B347AB2D
 IL2CPP_EXTERN_C IL2CPP_METHOD_ATTR void RectTransform_set_anchoredPosition_mF903ACE04F6959B1CD67E2B94FABC0263068F965 (RectTransform_t6C5DA5E41A89E0F488B001E45E58963480E543A5* __this, Vector2_t1FD6F485C871E832B347AB2DC8CBA08B739D8DF7 ___0_value, const RuntimeMethod* method) ;
 IL2CPP_EXTERN_C IL2CPP_METHOD_ATTR void JoystickVirtual_OnDrag_mB6E5F21B8DE0741A620992ADD9120B6B658A4D19 (JoystickVirtual_t59779DD19899EE5193F76F0B6F42775A9AE94D4F* __this, PointerEventData_t9670F3C7D823CCB738A1604C72A1EB90292396FB* ___0_eventData, const RuntimeMethod* method) ;
 IL2CPP_MANAGED_FORCE_INLINE IL2CPP_METHOD_ATTR Vector2_t1FD6F485C871E832B347AB2DC8CBA08B739D8DF7 Vector2_get_zero_m32506C40EC2EE7D5D4410BF40D3EE683A3D5F32C_inline (const RuntimeMethod* method) ;
+inline AudioSource_t871AC2272F896738252F04EE949AEF5B241D3299* GameObject_AddComponent_TisAudioSource_t871AC2272F896738252F04EE949AEF5B241D3299_m0E8EFDB9B3D8DF1ADE10C56D3168A9C1BA19BF14 (GameObject_t76FEDD663AB33C991A9C9A23129337651094216F* __this, const RuntimeMethod* method)
+{
+	return ((  AudioSource_t871AC2272F896738252F04EE949AEF5B241D3299* (*) (GameObject_t76FEDD663AB33C991A9C9A23129337651094216F*, const RuntimeMethod*))GameObject_AddComponent_TisRuntimeObject_m69B93700FACCF372F5753371C6E8FB780800B824_gshared)(__this, method);
+}
+IL2CPP_EXTERN_C IL2CPP_METHOD_ATTR void AudioSource_set_ignoreListenerPause_m1BC14FA0984DEDF62E1CDBAB323950100A0BF2B4 (AudioSource_t871AC2272F896738252F04EE949AEF5B241D3299* __this, bool ___0_value, const RuntimeMethod* method) ;
+IL2CPP_EXTERN_C IL2CPP_METHOD_ATTR void AudioListener_set_pause_m4D52C9FFC6B10B0F281329FA0FB3CE2C64894F33 (bool ___0_value, const RuntimeMethod* method) ;
 IL2CPP_EXTERN_C IL2CPP_METHOD_ATTR void Time_set_timeScale_mEF84EE4B2376A458387648079B426B267862D331 (float ___0_value, const RuntimeMethod* method) ;
 IL2CPP_EXTERN_C IL2CPP_METHOD_ATTR void LevelController_AtualizarUI_m828462D6F81AC1B34D4B173064EEF509EAEC2BBA (LevelController_t509E7CB90C17A4D233A7564A3857D3FE82ED1640* __this, const RuntimeMethod* method) ;
 IL2CPP_EXTERN_C IL2CPP_METHOD_ATTR EventSystem_t61C51380B105BE9D2C39C4F15B7E655659957707* EventSystem_get_current_mC87C69FB418563DC2A571A10E2F9DB59A6785016 (const RuntimeMethod* method) ;
@@ -1991,6 +2010,8 @@ IL2CPP_EXTERN_C IL2CPP_METHOD_ATTR void LevelController_FinalizarJogo_m2056B112E
 IL2CPP_EXTERN_C IL2CPP_METHOD_ATTR String_t* String_Concat_m093934F71A9B351911EE46311674ED463B180006 (String_t* ___0_str0, String_t* ___1_str1, String_t* ___2_str2, String_t* ___3_str3, const RuntimeMethod* method) ;
 IL2CPP_EXTERN_C IL2CPP_METHOD_ATTR void RawImage_set_texture_mC016318C95CC17A826D57DD219DBCB6DFD295C02 (RawImage_tFF12F7DB574FBDC1863CF607C7A12A5D9F8D6179* __this, Texture_t791CBB51219779964E0E8A2ED7C1AA5F92A4A700* ___0_value, const RuntimeMethod* method) ;
 IL2CPP_EXTERN_C IL2CPP_METHOD_ATTR void GameObject_SetActive_m638E92E1E75E519E5B24CF150B08CA8E0CDFAB92 (GameObject_t76FEDD663AB33C991A9C9A23129337651094216F* __this, bool ___0_value, const RuntimeMethod* method) ;
+IL2CPP_EXTERN_C IL2CPP_METHOD_ATTR void AudioSource_PlayOneShot_mF6FE95C58996B38EF6E7F7482F95F5E15E0AB30B (AudioSource_t871AC2272F896738252F04EE949AEF5B241D3299* __this, AudioClip_t5D272C4EB4F2D3ED49F1C346DEA373CF6D585F20* ___0_clip, float ___1_volumeScale, const RuntimeMethod* method) ;
+IL2CPP_EXTERN_C IL2CPP_METHOD_ATTR void PlayerPrefs_SetInt_m956D3E2DB966F20CF42F842880DDF9E2BE94D948 (String_t* ___0_key, int32_t ___1_value, const RuntimeMethod* method) ;
 IL2CPP_EXTERN_C IL2CPP_METHOD_ATTR Scene_tA1DC762B79745EB5140F054C884855B922318356 SceneManager_GetActiveScene_m0B320EC4302F51A71495D1CCD1A0FF9C2ED1FDC8 (const RuntimeMethod* method) ;
 IL2CPP_EXTERN_C IL2CPP_METHOD_ATTR String_t* Scene_get_name_m3C818DFA663E159274DAD823B780C7616C5E2A8C (Scene_tA1DC762B79745EB5140F054C884855B922318356* __this, const RuntimeMethod* method) ;
 IL2CPP_EXTERN_C IL2CPP_METHOD_ATTR void SceneManager_LoadScene_mBB3DBC1601A21F8F4E8A5D68FED30EA9412F218E (String_t* ___0_sceneName, const RuntimeMethod* method) ;
@@ -1998,7 +2019,6 @@ IL2CPP_EXTERN_C IL2CPP_METHOD_ATTR void Application_OpenURL_mE748FA4D503715DEE12
 IL2CPP_EXTERN_C IL2CPP_METHOD_ATTR RuntimeObject* MainMenuController_SelecionarBotao_m22BEDC7A47C00541F2D8DDC52CCE3DB518F23708 (MainMenuController_tC1AE80D8996B3AE38DACF2ABDAF9FC95E0293569* __this, const RuntimeMethod* method) ;
 IL2CPP_EXTERN_C IL2CPP_METHOD_ATTR Coroutine_t85EA685566A254C23F3FD77AB5BDFFFF8799596B* MonoBehaviour_StartCoroutine_m4CAFF732AA28CD3BDC5363B44A863575530EC812 (MonoBehaviour_t532A11E69716D348D8AA7F854AFCBFCB8AD17F71* __this, RuntimeObject* ___0_routine, const RuntimeMethod* method) ;
 IL2CPP_EXTERN_C IL2CPP_METHOD_ATTR void U3CSelecionarBotaoU3Ed__2__ctor_m51055EDF533E48814BD5F9C5974DA18079100FAD (U3CSelecionarBotaoU3Ed__2_t1EE003D53F46239035761BCA3527AA96F17DD32A* __this, int32_t ___0_U3CU3E1__state, const RuntimeMethod* method) ;
-IL2CPP_EXTERN_C IL2CPP_METHOD_ATTR void PlayerPrefs_SetInt_m956D3E2DB966F20CF42F842880DDF9E2BE94D948 (String_t* ___0_key, int32_t ___1_value, const RuntimeMethod* method) ;
 IL2CPP_EXTERN_C IL2CPP_METHOD_ATTR void Application_Quit_mE304382DB9A6455C2A474C8F364C7387F37E9281 (const RuntimeMethod* method) ;
 IL2CPP_EXTERN_C IL2CPP_METHOD_ATTR void Object__ctor_mE837C6B9FA8C6D5D109F4B2EC885D79919AC0EA2 (RuntimeObject* __this, const RuntimeMethod* method) ;
 IL2CPP_EXTERN_C IL2CPP_METHOD_ATTR void NotSupportedException__ctor_m1398D0CDE19B36AA3DE9392879738C1EA2439CDF (NotSupportedException_t1429765983D409BD2986508963C98D214E4EBF4A* __this, const RuntimeMethod* method) ;
@@ -2068,7 +2088,7 @@ IL2CPP_MANAGED_FORCE_INLINE IL2CPP_METHOD_ATTR float Vector3_get_magnitude_mF0D6
 #pragma clang diagnostic ignored "-Winvalid-offsetof"
 #pragma clang diagnostic ignored "-Wunused-variable"
 #endif
-// Method Definition Index: 71552
+// Method Definition Index: 71560
 IL2CPP_EXTERN_C IL2CPP_METHOD_ATTR void ItemColetavel_OnTriggerEnter2D_mAD93CAC2FD75305F3184F9490EF0FFC0FAAEECA0 (ItemColetavel_tBC5461B44F1AF5156914AEAC242CB0D61769BD42* __this, Collider2D_t6A17BA7734600EF3F26588E9ED903617D5B8EB52* ___0_collision, const RuntimeMethod* method) 
 {
 	static bool s_Il2CppMethodInitialized;
@@ -2132,7 +2152,7 @@ IL_004b:
 		return;
 	}
 }
-// Method Definition Index: 71553
+// Method Definition Index: 71561
 IL2CPP_EXTERN_C IL2CPP_METHOD_ATTR void ItemColetavel__ctor_mB8090A56E1F6C315BBF5D5FAB6ADD462C54F5037 (ItemColetavel_tBC5461B44F1AF5156914AEAC242CB0D61769BD42* __this, const RuntimeMethod* method) 
 {
 	{
@@ -2150,7 +2170,7 @@ IL2CPP_EXTERN_C IL2CPP_METHOD_ATTR void ItemColetavel__ctor_mB8090A56E1F6C315BBF
 #pragma clang diagnostic ignored "-Winvalid-offsetof"
 #pragma clang diagnostic ignored "-Wunused-variable"
 #endif
-// Method Definition Index: 71554
+// Method Definition Index: 71562
 IL2CPP_EXTERN_C IL2CPP_METHOD_ATTR void EnemySpawner_Start_m5302D69E915FF1027CFB0C1198CBCAA9430819A4 (EnemySpawner_tBA941A38B8AC67CF1D99E92E3BB0CC9C7A14A177* __this, const RuntimeMethod* method) 
 {
 	static bool s_Il2CppMethodInitialized;
@@ -2298,7 +2318,7 @@ IL_00c0:
 		return;
 	}
 }
-// Method Definition Index: 71555
+// Method Definition Index: 71563
 IL2CPP_EXTERN_C IL2CPP_METHOD_ATTR void EnemySpawner__ctor_m619CE38261A8A67AB91D66ED5BE44E56C1897E74 (EnemySpawner_tBA941A38B8AC67CF1D99E92E3BB0CC9C7A14A177* __this, const RuntimeMethod* method) 
 {
 	{
@@ -2314,7 +2334,7 @@ IL2CPP_EXTERN_C IL2CPP_METHOD_ATTR void EnemySpawner__ctor_m619CE38261A8A67AB91D
 #pragma clang diagnostic ignored "-Winvalid-offsetof"
 #pragma clang diagnostic ignored "-Wunused-variable"
 #endif
-// Method Definition Index: 71556
+// Method Definition Index: 71564
 IL2CPP_EXTERN_C IL2CPP_METHOD_ATTR void GeradorDeEspecial_Start_m2607DBBBA2296DC9FA09B6CE0AA83C102E00CBDB (GeradorDeEspecial_t9A1E174F3BD33402F2AAFDA6434BF32C8A324B88* __this, const RuntimeMethod* method) 
 {
 	static bool s_Il2CppMethodInitialized;
@@ -2372,7 +2392,7 @@ IL_0052:
 		return;
 	}
 }
-// Method Definition Index: 71557
+// Method Definition Index: 71565
 IL2CPP_EXTERN_C IL2CPP_METHOD_ATTR void GeradorDeEspecial__ctor_m50A851D1706318625274089A3DD92FF4E3BBEFFE (GeradorDeEspecial_t9A1E174F3BD33402F2AAFDA6434BF32C8A324B88* __this, const RuntimeMethod* method) 
 {
 	{
@@ -2396,7 +2416,7 @@ IL2CPP_EXTERN_C IL2CPP_METHOD_ATTR void GeradorDeEspecial__ctor_m50A851D17063186
 #pragma clang diagnostic ignored "-Winvalid-offsetof"
 #pragma clang diagnostic ignored "-Wunused-variable"
 #endif
-// Method Definition Index: 71558
+// Method Definition Index: 71566
 IL2CPP_EXTERN_C IL2CPP_METHOD_ATTR void Inimigo_OnCollisionEnter2D_mFA3F4CEB37A5DC835B6130EE78B2494D320DA3F6 (Inimigo_t7600FE929816207EB38DF96E000FD00DE1D38B33* __this, Collision2D_t81E83212C969FDDE2AB84EBCA31502818EEAB85B* ___0_collision, const RuntimeMethod* method) 
 {
 	static bool s_Il2CppMethodInitialized;
@@ -2435,7 +2455,7 @@ IL_0021:
 		return;
 	}
 }
-// Method Definition Index: 71559
+// Method Definition Index: 71567
 IL2CPP_EXTERN_C IL2CPP_METHOD_ATTR void Inimigo__ctor_m8AE1BEAEC4946FF0BE39BA05D52972E8277FACBB (Inimigo_t7600FE929816207EB38DF96E000FD00DE1D38B33* __this, const RuntimeMethod* method) 
 {
 	{
@@ -2451,7 +2471,7 @@ IL2CPP_EXTERN_C IL2CPP_METHOD_ATTR void Inimigo__ctor_m8AE1BEAEC4946FF0BE39BA05D
 #pragma clang diagnostic ignored "-Winvalid-offsetof"
 #pragma clang diagnostic ignored "-Wunused-variable"
 #endif
-// Method Definition Index: 71560
+// Method Definition Index: 71568
 IL2CPP_EXTERN_C IL2CPP_METHOD_ATTR Vector2_t1FD6F485C871E832B347AB2DC8CBA08B739D8DF7 JoystickVirtual_get_VetorInput_mBB52026A1BFFD355BCAB74B00B7227ED7AB9DC2E (const RuntimeMethod* method) 
 {
 	static bool s_Il2CppMethodInitialized;
@@ -2466,7 +2486,7 @@ IL2CPP_EXTERN_C IL2CPP_METHOD_ATTR Vector2_t1FD6F485C871E832B347AB2DC8CBA08B739D
 		return L_0;
 	}
 }
-// Method Definition Index: 71561
+// Method Definition Index: 71569
 IL2CPP_EXTERN_C IL2CPP_METHOD_ATTR void JoystickVirtual_set_VetorInput_m22E77A26791519F5EA8FAB2C0382B68C1C337A66 (Vector2_t1FD6F485C871E832B347AB2DC8CBA08B739D8DF7 ___0_value, const RuntimeMethod* method) 
 {
 	static bool s_Il2CppMethodInitialized;
@@ -2482,7 +2502,7 @@ IL2CPP_EXTERN_C IL2CPP_METHOD_ATTR void JoystickVirtual_set_VetorInput_m22E77A26
 		return;
 	}
 }
-// Method Definition Index: 71562
+// Method Definition Index: 71570
 IL2CPP_EXTERN_C IL2CPP_METHOD_ATTR void JoystickVirtual_Start_m5E5D2160A2BF5140CE7243EA8460472A8663155D (JoystickVirtual_t59779DD19899EE5193F76F0B6F42775A9AE94D4F* __this, const RuntimeMethod* method) 
 {
 	static bool s_Il2CppMethodInitialized;
@@ -2500,7 +2520,7 @@ IL2CPP_EXTERN_C IL2CPP_METHOD_ATTR void JoystickVirtual_Start_m5E5D2160A2BF5140C
 		L_0 = Component_GetComponent_TisRectTransform_t6C5DA5E41A89E0F488B001E45E58963480E543A5_m0640480E7E38BB88B0D1F6AD59E697C8EE6AAFA4(__this, Component_GetComponent_TisRectTransform_t6C5DA5E41A89E0F488B001E45E58963480E543A5_m0640480E7E38BB88B0D1F6AD59E697C8EE6AAFA4_RuntimeMethod_var);
 		__this->___fundoJoystick = L_0;
 		Il2CppCodeGenWriteBarrier((void**)(&__this->___fundoJoystick), (void*)L_0);
-		//<source_info:C:/Users/Hericle/Documents/Corre-Caramelo/Assets/Scripits/JoystickVirtual.cs:20>
+		//<source_info:C:/Users/Hericle/Documents/Corre-Caramelo/Assets/Scripits/JoystickVirtual.cs:18>
 		RectTransform_t6C5DA5E41A89E0F488B001E45E58963480E543A5* L_1 = __this->___fundoJoystick;
 		NullCheck(L_1);
 		Rect_tA04E0F8A1830E767F40FB27ECD8D309303571F0D L_2;
@@ -2510,11 +2530,11 @@ IL2CPP_EXTERN_C IL2CPP_METHOD_ATTR void JoystickVirtual_Start_m5E5D2160A2BF5140C
 		float L_3;
 		L_3 = Rect_get_width_m620D67551372073C9C32C4C4624C2A5713F7F9A9_inline((&V_0), NULL);
 		__this->___raio = ((float)(L_3/(2.0f)));
-		//<source_info:C:/Users/Hericle/Documents/Corre-Caramelo/Assets/Scripits/JoystickVirtual.cs:21>
+		//<source_info:C:/Users/Hericle/Documents/Corre-Caramelo/Assets/Scripits/JoystickVirtual.cs:19>
 		return;
 	}
 }
-// Method Definition Index: 71563
+// Method Definition Index: 71571
 IL2CPP_EXTERN_C IL2CPP_METHOD_ATTR void JoystickVirtual_OnDrag_mB6E5F21B8DE0741A620992ADD9120B6B658A4D19 (JoystickVirtual_t59779DD19899EE5193F76F0B6F42775A9AE94D4F* __this, PointerEventData_t9670F3C7D823CCB738A1604C72A1EB90292396FB* ___0_eventData, const RuntimeMethod* method) 
 {
 	static bool s_Il2CppMethodInitialized;
@@ -2534,7 +2554,7 @@ IL2CPP_EXTERN_C IL2CPP_METHOD_ATTR void JoystickVirtual_OnDrag_mB6E5F21B8DE0741A
 	Vector2_t1FD6F485C871E832B347AB2DC8CBA08B739D8DF7 G_B4_0;
 	memset((&G_B4_0), 0, sizeof(G_B4_0));
 	{
-		//<source_info:C:/Users/Hericle/Documents/Corre-Caramelo/Assets/Scripits/JoystickVirtual.cs:26>
+		//<source_info:C:/Users/Hericle/Documents/Corre-Caramelo/Assets/Scripits/JoystickVirtual.cs:24>
 		RectTransform_t6C5DA5E41A89E0F488B001E45E58963480E543A5* L_0 = __this->___fundoJoystick;
 		PointerEventData_t9670F3C7D823CCB738A1604C72A1EB90292396FB* L_1 = ___0_eventData;
 		NullCheck(L_1);
@@ -2553,7 +2573,7 @@ IL2CPP_EXTERN_C IL2CPP_METHOD_ATTR void JoystickVirtual_OnDrag_mB6E5F21B8DE0741A
 		}
 	}
 	{
-		//<source_info:C:/Users/Hericle/Documents/Corre-Caramelo/Assets/Scripits/JoystickVirtual.cs:29>
+		//<source_info:C:/Users/Hericle/Documents/Corre-Caramelo/Assets/Scripits/JoystickVirtual.cs:26>
 		Vector2_t1FD6F485C871E832B347AB2DC8CBA08B739D8DF7 L_6 = V_0;
 		float L_7 = L_6.___x;
 		RectTransform_t6C5DA5E41A89E0F488B001E45E58963480E543A5* L_8 = __this->___fundoJoystick;
@@ -2565,7 +2585,7 @@ IL2CPP_EXTERN_C IL2CPP_METHOD_ATTR void JoystickVirtual_OnDrag_mB6E5F21B8DE0741A
 		float L_10;
 		L_10 = Rect_get_width_m620D67551372073C9C32C4C4624C2A5713F7F9A9_inline((&V_1), NULL);
 		(&V_0)->___x = ((float)(L_7/L_10));
-		//<source_info:C:/Users/Hericle/Documents/Corre-Caramelo/Assets/Scripits/JoystickVirtual.cs:30>
+		//<source_info:C:/Users/Hericle/Documents/Corre-Caramelo/Assets/Scripits/JoystickVirtual.cs:27>
 		Vector2_t1FD6F485C871E832B347AB2DC8CBA08B739D8DF7 L_11 = V_0;
 		float L_12 = L_11.___y;
 		RectTransform_t6C5DA5E41A89E0F488B001E45E58963480E543A5* L_13 = __this->___fundoJoystick;
@@ -2576,7 +2596,7 @@ IL2CPP_EXTERN_C IL2CPP_METHOD_ATTR void JoystickVirtual_OnDrag_mB6E5F21B8DE0741A
 		float L_15;
 		L_15 = Rect_get_height_mE1AA6C6C725CCD2D317BD2157396D3CF7D47C9D8_inline((&V_1), NULL);
 		(&V_0)->___y = ((float)(L_12/L_15));
-		//<source_info:C:/Users/Hericle/Documents/Corre-Caramelo/Assets/Scripits/JoystickVirtual.cs:32>
+		//<source_info:C:/Users/Hericle/Documents/Corre-Caramelo/Assets/Scripits/JoystickVirtual.cs:29>
 		Vector2_t1FD6F485C871E832B347AB2DC8CBA08B739D8DF7 L_16 = V_0;
 		float L_17 = L_16.___x;
 		Vector2_t1FD6F485C871E832B347AB2DC8CBA08B739D8DF7 L_18 = V_0;
@@ -2585,7 +2605,7 @@ IL2CPP_EXTERN_C IL2CPP_METHOD_ATTR void JoystickVirtual_OnDrag_mB6E5F21B8DE0741A
 		memset((&L_20), 0, sizeof(L_20));
 		Vector2__ctor_m9525B79969AFFE3254B303A40997A56DEEB6F548_inline((&L_20), ((float)il2cpp_codegen_multiply(L_17, (2.0f))), ((float)il2cpp_codegen_multiply(L_19, (2.0f))), NULL);
 		JoystickVirtual_set_VetorInput_m22E77A26791519F5EA8FAB2C0382B68C1C337A66_inline(L_20, NULL);
-		//<source_info:C:/Users/Hericle/Documents/Corre-Caramelo/Assets/Scripits/JoystickVirtual.cs:33>
+		//<source_info:C:/Users/Hericle/Documents/Corre-Caramelo/Assets/Scripits/JoystickVirtual.cs:30>
 		Vector2_t1FD6F485C871E832B347AB2DC8CBA08B739D8DF7 L_21;
 		L_21 = JoystickVirtual_get_VetorInput_mBB52026A1BFFD355BCAB74B00B7227ED7AB9DC2E_inline(NULL);
 		V_2 = L_21;
@@ -2616,7 +2636,7 @@ IL_009d:
 IL_00aa:
 	{
 		JoystickVirtual_set_VetorInput_m22E77A26791519F5EA8FAB2C0382B68C1C337A66_inline(G_B4_0, NULL);
-		//<source_info:C:/Users/Hericle/Documents/Corre-Caramelo/Assets/Scripits/JoystickVirtual.cs:36>
+		//<source_info:C:/Users/Hericle/Documents/Corre-Caramelo/Assets/Scripits/JoystickVirtual.cs:32>
 		RectTransform_t6C5DA5E41A89E0F488B001E45E58963480E543A5* L_26 = __this->___alavanca;
 		il2cpp_codegen_runtime_class_init_inline(Object_tC12DECB6760A7F2CBF65D9DCF18D044C2D97152C_il2cpp_TypeInfo_var);
 		bool L_27;
@@ -2627,7 +2647,7 @@ IL_00aa:
 		}
 	}
 	{
-		//<source_info:C:/Users/Hericle/Documents/Corre-Caramelo/Assets/Scripits/JoystickVirtual.cs:38>
+		//<source_info:C:/Users/Hericle/Documents/Corre-Caramelo/Assets/Scripits/JoystickVirtual.cs:34>
 		RectTransform_t6C5DA5E41A89E0F488B001E45E58963480E543A5* L_28 = __this->___alavanca;
 		Vector2_t1FD6F485C871E832B347AB2DC8CBA08B739D8DF7 L_29;
 		L_29 = JoystickVirtual_get_VetorInput_mBB52026A1BFFD355BCAB74B00B7227ED7AB9DC2E_inline(NULL);
@@ -2646,22 +2666,22 @@ IL_00aa:
 
 IL_00ef:
 	{
-		//<source_info:C:/Users/Hericle/Documents/Corre-Caramelo/Assets/Scripits/JoystickVirtual.cs:41>
+		//<source_info:C:/Users/Hericle/Documents/Corre-Caramelo/Assets/Scripits/JoystickVirtual.cs:37>
 		return;
 	}
 }
-// Method Definition Index: 71564
+// Method Definition Index: 71572
 IL2CPP_EXTERN_C IL2CPP_METHOD_ATTR void JoystickVirtual_OnPointerDown_mC61C2192099A65081478F930F4061AD972768DB7 (JoystickVirtual_t59779DD19899EE5193F76F0B6F42775A9AE94D4F* __this, PointerEventData_t9670F3C7D823CCB738A1604C72A1EB90292396FB* ___0_eventData, const RuntimeMethod* method) 
 {
 	{
-		//<source_info:C:/Users/Hericle/Documents/Corre-Caramelo/Assets/Scripits/JoystickVirtual.cs:45>
+		//<source_info:C:/Users/Hericle/Documents/Corre-Caramelo/Assets/Scripits/JoystickVirtual.cs:41>
 		PointerEventData_t9670F3C7D823CCB738A1604C72A1EB90292396FB* L_0 = ___0_eventData;
 		JoystickVirtual_OnDrag_mB6E5F21B8DE0741A620992ADD9120B6B658A4D19(__this, L_0, NULL);
-		//<source_info:C:/Users/Hericle/Documents/Corre-Caramelo/Assets/Scripits/JoystickVirtual.cs:46>
+		//<source_info:C:/Users/Hericle/Documents/Corre-Caramelo/Assets/Scripits/JoystickVirtual.cs:42>
 		return;
 	}
 }
-// Method Definition Index: 71565
+// Method Definition Index: 71573
 IL2CPP_EXTERN_C IL2CPP_METHOD_ATTR void JoystickVirtual_OnPointerUp_m466138DCF82B5E558024113C39A2EA3A74AF6B42 (JoystickVirtual_t59779DD19899EE5193F76F0B6F42775A9AE94D4F* __this, PointerEventData_t9670F3C7D823CCB738A1604C72A1EB90292396FB* ___0_eventData, const RuntimeMethod* method) 
 {
 	static bool s_Il2CppMethodInitialized;
@@ -2671,11 +2691,11 @@ IL2CPP_EXTERN_C IL2CPP_METHOD_ATTR void JoystickVirtual_OnPointerUp_m466138DCF82
 		s_Il2CppMethodInitialized = true;
 	}
 	{
-		//<source_info:C:/Users/Hericle/Documents/Corre-Caramelo/Assets/Scripits/JoystickVirtual.cs:50>
+		//<source_info:C:/Users/Hericle/Documents/Corre-Caramelo/Assets/Scripits/JoystickVirtual.cs:46>
 		Vector2_t1FD6F485C871E832B347AB2DC8CBA08B739D8DF7 L_0;
 		L_0 = Vector2_get_zero_m32506C40EC2EE7D5D4410BF40D3EE683A3D5F32C_inline(NULL);
 		JoystickVirtual_set_VetorInput_m22E77A26791519F5EA8FAB2C0382B68C1C337A66_inline(L_0, NULL);
-		//<source_info:C:/Users/Hericle/Documents/Corre-Caramelo/Assets/Scripits/JoystickVirtual.cs:51>
+		//<source_info:C:/Users/Hericle/Documents/Corre-Caramelo/Assets/Scripits/JoystickVirtual.cs:47>
 		RectTransform_t6C5DA5E41A89E0F488B001E45E58963480E543A5* L_1 = __this->___alavanca;
 		il2cpp_codegen_runtime_class_init_inline(Object_tC12DECB6760A7F2CBF65D9DCF18D044C2D97152C_il2cpp_TypeInfo_var);
 		bool L_2;
@@ -2686,7 +2706,7 @@ IL2CPP_EXTERN_C IL2CPP_METHOD_ATTR void JoystickVirtual_OnPointerUp_m466138DCF82
 		}
 	}
 	{
-		//<source_info:C:/Users/Hericle/Documents/Corre-Caramelo/Assets/Scripits/JoystickVirtual.cs:53>
+		//<source_info:C:/Users/Hericle/Documents/Corre-Caramelo/Assets/Scripits/JoystickVirtual.cs:49>
 		RectTransform_t6C5DA5E41A89E0F488B001E45E58963480E543A5* L_3 = __this->___alavanca;
 		Vector2_t1FD6F485C871E832B347AB2DC8CBA08B739D8DF7 L_4;
 		L_4 = Vector2_get_zero_m32506C40EC2EE7D5D4410BF40D3EE683A3D5F32C_inline(NULL);
@@ -2696,11 +2716,11 @@ IL2CPP_EXTERN_C IL2CPP_METHOD_ATTR void JoystickVirtual_OnPointerUp_m466138DCF82
 
 IL_0028:
 	{
-		//<source_info:C:/Users/Hericle/Documents/Corre-Caramelo/Assets/Scripits/JoystickVirtual.cs:55>
+		//<source_info:C:/Users/Hericle/Documents/Corre-Caramelo/Assets/Scripits/JoystickVirtual.cs:51>
 		return;
 	}
 }
-// Method Definition Index: 71566
+// Method Definition Index: 71574
 IL2CPP_EXTERN_C IL2CPP_METHOD_ATTR void JoystickVirtual__ctor_mAB196F13B5C82D896BE88E16568E98976569A89A (JoystickVirtual_t59779DD19899EE5193F76F0B6F42775A9AE94D4F* __this, const RuntimeMethod* method) 
 {
 	{
@@ -2716,24 +2736,37 @@ IL2CPP_EXTERN_C IL2CPP_METHOD_ATTR void JoystickVirtual__ctor_mAB196F13B5C82D896
 #pragma clang diagnostic ignored "-Winvalid-offsetof"
 #pragma clang diagnostic ignored "-Wunused-variable"
 #endif
-// Method Definition Index: 71567
+// Method Definition Index: 71575
 IL2CPP_EXTERN_C IL2CPP_METHOD_ATTR void LevelController_Awake_m57F9A6C6675AC61D2D1C28D035B19965C95A84AC (LevelController_t509E7CB90C17A4D233A7564A3857D3FE82ED1640* __this, const RuntimeMethod* method) 
 {
 	static bool s_Il2CppMethodInitialized;
 	if (!s_Il2CppMethodInitialized)
 	{
+		il2cpp_codegen_initialize_runtime_metadata((uintptr_t*)&GameObject_AddComponent_TisAudioSource_t871AC2272F896738252F04EE949AEF5B241D3299_m0E8EFDB9B3D8DF1ADE10C56D3168A9C1BA19BF14_RuntimeMethod_var);
 		il2cpp_codegen_initialize_runtime_metadata((uintptr_t*)&LevelController_t509E7CB90C17A4D233A7564A3857D3FE82ED1640_il2cpp_TypeInfo_var);
 		s_Il2CppMethodInitialized = true;
 	}
 	{
-		//<source_info:C:/Users/Hericle/Documents/Corre-Caramelo/Assets/Scripits/LevelController.cs:37>
+		//<source_info:C:/Users/Hericle/Documents/Corre-Caramelo/Assets/Scripits/LevelController.cs:46>
 		((LevelController_t509E7CB90C17A4D233A7564A3857D3FE82ED1640_StaticFields*)il2cpp_codegen_static_fields_for(LevelController_t509E7CB90C17A4D233A7564A3857D3FE82ED1640_il2cpp_TypeInfo_var))->___instance = __this;
 		Il2CppCodeGenWriteBarrier((void**)(&((LevelController_t509E7CB90C17A4D233A7564A3857D3FE82ED1640_StaticFields*)il2cpp_codegen_static_fields_for(LevelController_t509E7CB90C17A4D233A7564A3857D3FE82ED1640_il2cpp_TypeInfo_var))->___instance), (void*)__this);
-		//<source_info:C:/Users/Hericle/Documents/Corre-Caramelo/Assets/Scripits/LevelController.cs:38>
+		//<source_info:C:/Users/Hericle/Documents/Corre-Caramelo/Assets/Scripits/LevelController.cs:48>
+		GameObject_t76FEDD663AB33C991A9C9A23129337651094216F* L_0;
+		L_0 = Component_get_gameObject_m57AEFBB14DB39EC476F740BA000E170355DE691B(__this, NULL);
+		NullCheck(L_0);
+		AudioSource_t871AC2272F896738252F04EE949AEF5B241D3299* L_1;
+		L_1 = GameObject_AddComponent_TisAudioSource_t871AC2272F896738252F04EE949AEF5B241D3299_m0E8EFDB9B3D8DF1ADE10C56D3168A9C1BA19BF14(L_0, GameObject_AddComponent_TisAudioSource_t871AC2272F896738252F04EE949AEF5B241D3299_m0E8EFDB9B3D8DF1ADE10C56D3168A9C1BA19BF14_RuntimeMethod_var);
+		__this->___tocadorDeAudio = L_1;
+		Il2CppCodeGenWriteBarrier((void**)(&__this->___tocadorDeAudio), (void*)L_1);
+		//<source_info:C:/Users/Hericle/Documents/Corre-Caramelo/Assets/Scripits/LevelController.cs:49>
+		AudioSource_t871AC2272F896738252F04EE949AEF5B241D3299* L_2 = __this->___tocadorDeAudio;
+		NullCheck(L_2);
+		AudioSource_set_ignoreListenerPause_m1BC14FA0984DEDF62E1CDBAB323950100A0BF2B4(L_2, (bool)1, NULL);
+		//<source_info:C:/Users/Hericle/Documents/Corre-Caramelo/Assets/Scripits/LevelController.cs:50>
 		return;
 	}
 }
-// Method Definition Index: 71568
+// Method Definition Index: 71576
 IL2CPP_EXTERN_C IL2CPP_METHOD_ATTR void LevelController_Start_m44265856F8C03E00F023881530793DE57EBD0D76 (LevelController_t509E7CB90C17A4D233A7564A3857D3FE82ED1640* __this, const RuntimeMethod* method) 
 {
 	static bool s_Il2CppMethodInitialized;
@@ -2744,35 +2777,37 @@ IL2CPP_EXTERN_C IL2CPP_METHOD_ATTR void LevelController_Start_m44265856F8C03E00F
 		s_Il2CppMethodInitialized = true;
 	}
 	{
-		//<source_info:C:/Users/Hericle/Documents/Corre-Caramelo/Assets/Scripits/LevelController.cs:42>
+		//<source_info:C:/Users/Hericle/Documents/Corre-Caramelo/Assets/Scripits/LevelController.cs:54>
 		int32_t L_0;
 		L_0 = PlayerPrefs_GetInt_m8AD1FA8BA54CC6CE2B2AEEE36B6D75587BB1692D(_stringLiteralB142EEFB611C289D4F0231086BB86F5A0E91762F, 1, NULL);
 		__this->___nivelAtual = L_0;
-		//<source_info:C:/Users/Hericle/Documents/Corre-Caramelo/Assets/Scripits/LevelController.cs:43>
+		//<source_info:C:/Users/Hericle/Documents/Corre-Caramelo/Assets/Scripits/LevelController.cs:55>
 		int32_t L_1 = __this->___nivelAtual;
 		__this->___objetivoAtual = ((int32_t)il2cpp_codegen_multiply(L_1, 5));
-		//<source_info:C:/Users/Hericle/Documents/Corre-Caramelo/Assets/Scripits/LevelController.cs:44>
+		//<source_info:C:/Users/Hericle/Documents/Corre-Caramelo/Assets/Scripits/LevelController.cs:56>
 		__this->___ossosColetados = 0;
-		//<source_info:C:/Users/Hericle/Documents/Corre-Caramelo/Assets/Scripits/LevelController.cs:45>
+		//<source_info:C:/Users/Hericle/Documents/Corre-Caramelo/Assets/Scripits/LevelController.cs:57>
 		float L_2 = __this->___tempoTotal;
 		__this->___timer = L_2;
-		//<source_info:C:/Users/Hericle/Documents/Corre-Caramelo/Assets/Scripits/LevelController.cs:46>
+		//<source_info:C:/Users/Hericle/Documents/Corre-Caramelo/Assets/Scripits/LevelController.cs:58>
 		__this->___isGameOver = (bool)0;
-		//<source_info:C:/Users/Hericle/Documents/Corre-Caramelo/Assets/Scripits/LevelController.cs:47>
+		//<source_info:C:/Users/Hericle/Documents/Corre-Caramelo/Assets/Scripits/LevelController.cs:60>
+		AudioListener_set_pause_m4D52C9FFC6B10B0F281329FA0FB3CE2C64894F33((bool)0, NULL);
+		//<source_info:C:/Users/Hericle/Documents/Corre-Caramelo/Assets/Scripits/LevelController.cs:61>
 		Time_set_timeScale_mEF84EE4B2376A458387648079B426B267862D331((1.0f), NULL);
-		//<source_info:C:/Users/Hericle/Documents/Corre-Caramelo/Assets/Scripits/LevelController.cs:48>
+		//<source_info:C:/Users/Hericle/Documents/Corre-Caramelo/Assets/Scripits/LevelController.cs:62>
 		LevelController_AtualizarUI_m828462D6F81AC1B34D4B173064EEF509EAEC2BBA(__this, NULL);
-		//<source_info:C:/Users/Hericle/Documents/Corre-Caramelo/Assets/Scripits/LevelController.cs:51>
+		//<source_info:C:/Users/Hericle/Documents/Corre-Caramelo/Assets/Scripits/LevelController.cs:64>
 		il2cpp_codegen_runtime_class_init_inline(EventSystem_t61C51380B105BE9D2C39C4F15B7E655659957707_il2cpp_TypeInfo_var);
 		EventSystem_t61C51380B105BE9D2C39C4F15B7E655659957707* L_3;
 		L_3 = EventSystem_get_current_mC87C69FB418563DC2A571A10E2F9DB59A6785016(NULL);
 		NullCheck(L_3);
 		EventSystem_SetSelectedGameObject_m91382EAC4D552C672CC07BE7EB1481F156045280(L_3, (GameObject_t76FEDD663AB33C991A9C9A23129337651094216F*)NULL, NULL);
-		//<source_info:C:/Users/Hericle/Documents/Corre-Caramelo/Assets/Scripits/LevelController.cs:52>
+		//<source_info:C:/Users/Hericle/Documents/Corre-Caramelo/Assets/Scripits/LevelController.cs:65>
 		return;
 	}
 }
-// Method Definition Index: 71569
+// Method Definition Index: 71577
 IL2CPP_EXTERN_C IL2CPP_METHOD_ATTR void LevelController_Update_m1192442885CA114262BA42AC7B232FB3FD4D8583 (LevelController_t509E7CB90C17A4D233A7564A3857D3FE82ED1640* __this, const RuntimeMethod* method) 
 {
 	static bool s_Il2CppMethodInitialized;
@@ -2784,7 +2819,7 @@ IL2CPP_EXTERN_C IL2CPP_METHOD_ATTR void LevelController_Update_m1192442885CA1142
 	}
 	float V_0 = 0.0f;
 	{
-		//<source_info:C:/Users/Hericle/Documents/Corre-Caramelo/Assets/Scripits/LevelController.cs:56>
+		//<source_info:C:/Users/Hericle/Documents/Corre-Caramelo/Assets/Scripits/LevelController.cs:69>
 		bool L_0 = __this->___isGameOver;
 		if (!L_0)
 		{
@@ -2792,13 +2827,13 @@ IL2CPP_EXTERN_C IL2CPP_METHOD_ATTR void LevelController_Update_m1192442885CA1142
 		}
 	}
 	{
-		//<source_info:C:/Users/Hericle/Documents/Corre-Caramelo/Assets/Scripits/LevelController.cs:56>
+		//<source_info:C:/Users/Hericle/Documents/Corre-Caramelo/Assets/Scripits/LevelController.cs:69>
 		return;
 	}
 
 IL_0009:
 	{
-		//<source_info:C:/Users/Hericle/Documents/Corre-Caramelo/Assets/Scripits/LevelController.cs:58>
+		//<source_info:C:/Users/Hericle/Documents/Corre-Caramelo/Assets/Scripits/LevelController.cs:71>
 		float L_1 = __this->___timer;
 		if ((!(((float)L_1) > ((float)(0.0f)))))
 		{
@@ -2806,12 +2841,12 @@ IL_0009:
 		}
 	}
 	{
-		//<source_info:C:/Users/Hericle/Documents/Corre-Caramelo/Assets/Scripits/LevelController.cs:60>
+		//<source_info:C:/Users/Hericle/Documents/Corre-Caramelo/Assets/Scripits/LevelController.cs:73>
 		float L_2 = __this->___timer;
 		float L_3;
 		L_3 = Time_get_deltaTime_mC3195000401F0FD167DD2F948FD2BC58330D0865(NULL);
 		__this->___timer = ((float)il2cpp_codegen_subtract(L_2, L_3));
-		//<source_info:C:/Users/Hericle/Documents/Corre-Caramelo/Assets/Scripits/LevelController.cs:61>
+		//<source_info:C:/Users/Hericle/Documents/Corre-Caramelo/Assets/Scripits/LevelController.cs:74>
 		TMP_Text_tE8D677872D43AD4B2AAF0D6101692A17D0B251A9* L_4 = __this->___timerText;
 		il2cpp_codegen_runtime_class_init_inline(Object_tC12DECB6760A7F2CBF65D9DCF18D044C2D97152C_il2cpp_TypeInfo_var);
 		bool L_5;
@@ -2822,7 +2857,7 @@ IL_0009:
 		}
 	}
 	{
-		//<source_info:C:/Users/Hericle/Documents/Corre-Caramelo/Assets/Scripits/LevelController.cs:62>
+		//<source_info:C:/Users/Hericle/Documents/Corre-Caramelo/Assets/Scripits/LevelController.cs:75>
 		TMP_Text_tE8D677872D43AD4B2AAF0D6101692A17D0B251A9* L_6 = __this->___timerText;
 		float L_7 = __this->___timer;
 		float L_8;
@@ -2839,85 +2874,18 @@ IL_0009:
 
 IL_005f:
 	{
-		//<source_info:C:/Users/Hericle/Documents/Corre-Caramelo/Assets/Scripits/LevelController.cs:66>
+		//<source_info:C:/Users/Hericle/Documents/Corre-Caramelo/Assets/Scripits/LevelController.cs:79>
 		LevelController_FinalizarJogo_m2056B112E9791DECFD424EE1C0462C4BF2971EFD(__this, (bool)0, NULL);
 	}
 
 IL_0066:
 	{
-		//<source_info:C:/Users/Hericle/Documents/Corre-Caramelo/Assets/Scripits/LevelController.cs:68>
-		return;
-	}
-}
-// Method Definition Index: 71570
-IL2CPP_EXTERN_C IL2CPP_METHOD_ATTR void LevelController_ColetarOsso_m01E2E83E6EE211628EBC32A36F185E34B578D6AB (const RuntimeMethod* method) 
-{
-	static bool s_Il2CppMethodInitialized;
-	if (!s_Il2CppMethodInitialized)
-	{
-		il2cpp_codegen_initialize_runtime_metadata((uintptr_t*)&LevelController_t509E7CB90C17A4D233A7564A3857D3FE82ED1640_il2cpp_TypeInfo_var);
-		il2cpp_codegen_initialize_runtime_metadata((uintptr_t*)&Object_tC12DECB6760A7F2CBF65D9DCF18D044C2D97152C_il2cpp_TypeInfo_var);
-		s_Il2CppMethodInitialized = true;
-	}
-	{
-		//<source_info:C:/Users/Hericle/Documents/Corre-Caramelo/Assets/Scripits/LevelController.cs:72>
-		LevelController_t509E7CB90C17A4D233A7564A3857D3FE82ED1640* L_0 = ((LevelController_t509E7CB90C17A4D233A7564A3857D3FE82ED1640_StaticFields*)il2cpp_codegen_static_fields_for(LevelController_t509E7CB90C17A4D233A7564A3857D3FE82ED1640_il2cpp_TypeInfo_var))->___instance;
-		il2cpp_codegen_runtime_class_init_inline(Object_tC12DECB6760A7F2CBF65D9DCF18D044C2D97152C_il2cpp_TypeInfo_var);
-		bool L_1;
-		L_1 = Object_op_Inequality_mD0BE578448EAA61948F25C32F8DD55AB1F778602(L_0, (Object_tC12DECB6760A7F2CBF65D9DCF18D044C2D97152C*)NULL, NULL);
-		if (!L_1)
-		{
-			goto IL_0056;
-		}
-	}
-	{
-		LevelController_t509E7CB90C17A4D233A7564A3857D3FE82ED1640* L_2 = ((LevelController_t509E7CB90C17A4D233A7564A3857D3FE82ED1640_StaticFields*)il2cpp_codegen_static_fields_for(LevelController_t509E7CB90C17A4D233A7564A3857D3FE82ED1640_il2cpp_TypeInfo_var))->___instance;
-		NullCheck(L_2);
-		bool L_3 = L_2->___isGameOver;
-		if (L_3)
-		{
-			goto IL_0056;
-		}
-	}
-	{
-		//<source_info:C:/Users/Hericle/Documents/Corre-Caramelo/Assets/Scripits/LevelController.cs:74>
-		LevelController_t509E7CB90C17A4D233A7564A3857D3FE82ED1640* L_4 = ((LevelController_t509E7CB90C17A4D233A7564A3857D3FE82ED1640_StaticFields*)il2cpp_codegen_static_fields_for(LevelController_t509E7CB90C17A4D233A7564A3857D3FE82ED1640_il2cpp_TypeInfo_var))->___instance;
-		LevelController_t509E7CB90C17A4D233A7564A3857D3FE82ED1640* L_5 = L_4;
-		NullCheck(L_5);
-		int32_t L_6 = L_5->___ossosColetados;
-		NullCheck(L_5);
-		L_5->___ossosColetados = ((int32_t)il2cpp_codegen_add(L_6, 1));
-		//<source_info:C:/Users/Hericle/Documents/Corre-Caramelo/Assets/Scripits/LevelController.cs:75>
-		LevelController_t509E7CB90C17A4D233A7564A3857D3FE82ED1640* L_7 = ((LevelController_t509E7CB90C17A4D233A7564A3857D3FE82ED1640_StaticFields*)il2cpp_codegen_static_fields_for(LevelController_t509E7CB90C17A4D233A7564A3857D3FE82ED1640_il2cpp_TypeInfo_var))->___instance;
-		NullCheck(L_7);
-		LevelController_AtualizarUI_m828462D6F81AC1B34D4B173064EEF509EAEC2BBA(L_7, NULL);
-		//<source_info:C:/Users/Hericle/Documents/Corre-Caramelo/Assets/Scripits/LevelController.cs:78>
-		LevelController_t509E7CB90C17A4D233A7564A3857D3FE82ED1640* L_8 = ((LevelController_t509E7CB90C17A4D233A7564A3857D3FE82ED1640_StaticFields*)il2cpp_codegen_static_fields_for(LevelController_t509E7CB90C17A4D233A7564A3857D3FE82ED1640_il2cpp_TypeInfo_var))->___instance;
-		NullCheck(L_8);
-		int32_t L_9 = L_8->___ossosColetados;
-		LevelController_t509E7CB90C17A4D233A7564A3857D3FE82ED1640* L_10 = ((LevelController_t509E7CB90C17A4D233A7564A3857D3FE82ED1640_StaticFields*)il2cpp_codegen_static_fields_for(LevelController_t509E7CB90C17A4D233A7564A3857D3FE82ED1640_il2cpp_TypeInfo_var))->___instance;
-		NullCheck(L_10);
-		int32_t L_11 = L_10->___objetivoAtual;
-		if ((((int32_t)L_9) < ((int32_t)L_11)))
-		{
-			goto IL_0056;
-		}
-	}
-	{
-		//<source_info:C:/Users/Hericle/Documents/Corre-Caramelo/Assets/Scripits/LevelController.cs:79>
-		LevelController_t509E7CB90C17A4D233A7564A3857D3FE82ED1640* L_12 = ((LevelController_t509E7CB90C17A4D233A7564A3857D3FE82ED1640_StaticFields*)il2cpp_codegen_static_fields_for(LevelController_t509E7CB90C17A4D233A7564A3857D3FE82ED1640_il2cpp_TypeInfo_var))->___instance;
-		NullCheck(L_12);
-		LevelController_FinalizarJogo_m2056B112E9791DECFD424EE1C0462C4BF2971EFD(L_12, (bool)1, NULL);
-	}
-
-IL_0056:
-	{
 		//<source_info:C:/Users/Hericle/Documents/Corre-Caramelo/Assets/Scripits/LevelController.cs:81>
 		return;
 	}
 }
-// Method Definition Index: 71571
-IL2CPP_EXTERN_C IL2CPP_METHOD_ATTR void LevelController_Morreu_m5AA4059B24B9A9E75E882B17235166F4BBB516EA (const RuntimeMethod* method) 
+// Method Definition Index: 71578
+IL2CPP_EXTERN_C IL2CPP_METHOD_ATTR void LevelController_ColetarOsso_m01E2E83E6EE211628EBC32A36F185E34B578D6AB (const RuntimeMethod* method) 
 {
 	static bool s_Il2CppMethodInitialized;
 	if (!s_Il2CppMethodInitialized)
@@ -2934,6 +2902,73 @@ IL2CPP_EXTERN_C IL2CPP_METHOD_ATTR void LevelController_Morreu_m5AA4059B24B9A9E7
 		L_1 = Object_op_Inequality_mD0BE578448EAA61948F25C32F8DD55AB1F778602(L_0, (Object_tC12DECB6760A7F2CBF65D9DCF18D044C2D97152C*)NULL, NULL);
 		if (!L_1)
 		{
+			goto IL_0056;
+		}
+	}
+	{
+		LevelController_t509E7CB90C17A4D233A7564A3857D3FE82ED1640* L_2 = ((LevelController_t509E7CB90C17A4D233A7564A3857D3FE82ED1640_StaticFields*)il2cpp_codegen_static_fields_for(LevelController_t509E7CB90C17A4D233A7564A3857D3FE82ED1640_il2cpp_TypeInfo_var))->___instance;
+		NullCheck(L_2);
+		bool L_3 = L_2->___isGameOver;
+		if (L_3)
+		{
+			goto IL_0056;
+		}
+	}
+	{
+		//<source_info:C:/Users/Hericle/Documents/Corre-Caramelo/Assets/Scripits/LevelController.cs:87>
+		LevelController_t509E7CB90C17A4D233A7564A3857D3FE82ED1640* L_4 = ((LevelController_t509E7CB90C17A4D233A7564A3857D3FE82ED1640_StaticFields*)il2cpp_codegen_static_fields_for(LevelController_t509E7CB90C17A4D233A7564A3857D3FE82ED1640_il2cpp_TypeInfo_var))->___instance;
+		LevelController_t509E7CB90C17A4D233A7564A3857D3FE82ED1640* L_5 = L_4;
+		NullCheck(L_5);
+		int32_t L_6 = L_5->___ossosColetados;
+		NullCheck(L_5);
+		L_5->___ossosColetados = ((int32_t)il2cpp_codegen_add(L_6, 1));
+		//<source_info:C:/Users/Hericle/Documents/Corre-Caramelo/Assets/Scripits/LevelController.cs:88>
+		LevelController_t509E7CB90C17A4D233A7564A3857D3FE82ED1640* L_7 = ((LevelController_t509E7CB90C17A4D233A7564A3857D3FE82ED1640_StaticFields*)il2cpp_codegen_static_fields_for(LevelController_t509E7CB90C17A4D233A7564A3857D3FE82ED1640_il2cpp_TypeInfo_var))->___instance;
+		NullCheck(L_7);
+		LevelController_AtualizarUI_m828462D6F81AC1B34D4B173064EEF509EAEC2BBA(L_7, NULL);
+		//<source_info:C:/Users/Hericle/Documents/Corre-Caramelo/Assets/Scripits/LevelController.cs:90>
+		LevelController_t509E7CB90C17A4D233A7564A3857D3FE82ED1640* L_8 = ((LevelController_t509E7CB90C17A4D233A7564A3857D3FE82ED1640_StaticFields*)il2cpp_codegen_static_fields_for(LevelController_t509E7CB90C17A4D233A7564A3857D3FE82ED1640_il2cpp_TypeInfo_var))->___instance;
+		NullCheck(L_8);
+		int32_t L_9 = L_8->___ossosColetados;
+		LevelController_t509E7CB90C17A4D233A7564A3857D3FE82ED1640* L_10 = ((LevelController_t509E7CB90C17A4D233A7564A3857D3FE82ED1640_StaticFields*)il2cpp_codegen_static_fields_for(LevelController_t509E7CB90C17A4D233A7564A3857D3FE82ED1640_il2cpp_TypeInfo_var))->___instance;
+		NullCheck(L_10);
+		int32_t L_11 = L_10->___objetivoAtual;
+		if ((((int32_t)L_9) < ((int32_t)L_11)))
+		{
+			goto IL_0056;
+		}
+	}
+	{
+		//<source_info:C:/Users/Hericle/Documents/Corre-Caramelo/Assets/Scripits/LevelController.cs:91>
+		LevelController_t509E7CB90C17A4D233A7564A3857D3FE82ED1640* L_12 = ((LevelController_t509E7CB90C17A4D233A7564A3857D3FE82ED1640_StaticFields*)il2cpp_codegen_static_fields_for(LevelController_t509E7CB90C17A4D233A7564A3857D3FE82ED1640_il2cpp_TypeInfo_var))->___instance;
+		NullCheck(L_12);
+		LevelController_FinalizarJogo_m2056B112E9791DECFD424EE1C0462C4BF2971EFD(L_12, (bool)1, NULL);
+	}
+
+IL_0056:
+	{
+		//<source_info:C:/Users/Hericle/Documents/Corre-Caramelo/Assets/Scripits/LevelController.cs:93>
+		return;
+	}
+}
+// Method Definition Index: 71579
+IL2CPP_EXTERN_C IL2CPP_METHOD_ATTR void LevelController_Morreu_m5AA4059B24B9A9E75E882B17235166F4BBB516EA (const RuntimeMethod* method) 
+{
+	static bool s_Il2CppMethodInitialized;
+	if (!s_Il2CppMethodInitialized)
+	{
+		il2cpp_codegen_initialize_runtime_metadata((uintptr_t*)&LevelController_t509E7CB90C17A4D233A7564A3857D3FE82ED1640_il2cpp_TypeInfo_var);
+		il2cpp_codegen_initialize_runtime_metadata((uintptr_t*)&Object_tC12DECB6760A7F2CBF65D9DCF18D044C2D97152C_il2cpp_TypeInfo_var);
+		s_Il2CppMethodInitialized = true;
+	}
+	{
+		//<source_info:C:/Users/Hericle/Documents/Corre-Caramelo/Assets/Scripits/LevelController.cs:97>
+		LevelController_t509E7CB90C17A4D233A7564A3857D3FE82ED1640* L_0 = ((LevelController_t509E7CB90C17A4D233A7564A3857D3FE82ED1640_StaticFields*)il2cpp_codegen_static_fields_for(LevelController_t509E7CB90C17A4D233A7564A3857D3FE82ED1640_il2cpp_TypeInfo_var))->___instance;
+		il2cpp_codegen_runtime_class_init_inline(Object_tC12DECB6760A7F2CBF65D9DCF18D044C2D97152C_il2cpp_TypeInfo_var);
+		bool L_1;
+		L_1 = Object_op_Inequality_mD0BE578448EAA61948F25C32F8DD55AB1F778602(L_0, (Object_tC12DECB6760A7F2CBF65D9DCF18D044C2D97152C*)NULL, NULL);
+		if (!L_1)
+		{
 			goto IL_0024;
 		}
 	}
@@ -2947,7 +2982,7 @@ IL2CPP_EXTERN_C IL2CPP_METHOD_ATTR void LevelController_Morreu_m5AA4059B24B9A9E7
 		}
 	}
 	{
-		//<source_info:C:/Users/Hericle/Documents/Corre-Caramelo/Assets/Scripits/LevelController.cs:86>
+		//<source_info:C:/Users/Hericle/Documents/Corre-Caramelo/Assets/Scripits/LevelController.cs:98>
 		LevelController_t509E7CB90C17A4D233A7564A3857D3FE82ED1640* L_4 = ((LevelController_t509E7CB90C17A4D233A7564A3857D3FE82ED1640_StaticFields*)il2cpp_codegen_static_fields_for(LevelController_t509E7CB90C17A4D233A7564A3857D3FE82ED1640_il2cpp_TypeInfo_var))->___instance;
 		NullCheck(L_4);
 		LevelController_FinalizarJogo_m2056B112E9791DECFD424EE1C0462C4BF2971EFD(L_4, (bool)0, NULL);
@@ -2955,11 +2990,11 @@ IL2CPP_EXTERN_C IL2CPP_METHOD_ATTR void LevelController_Morreu_m5AA4059B24B9A9E7
 
 IL_0024:
 	{
-		//<source_info:C:/Users/Hericle/Documents/Corre-Caramelo/Assets/Scripits/LevelController.cs:87>
+		//<source_info:C:/Users/Hericle/Documents/Corre-Caramelo/Assets/Scripits/LevelController.cs:99>
 		return;
 	}
 }
-// Method Definition Index: 71572
+// Method Definition Index: 71580
 IL2CPP_EXTERN_C IL2CPP_METHOD_ATTR void LevelController_AtualizarUI_m828462D6F81AC1B34D4B173064EEF509EAEC2BBA (LevelController_t509E7CB90C17A4D233A7564A3857D3FE82ED1640* __this, const RuntimeMethod* method) 
 {
 	static bool s_Il2CppMethodInitialized;
@@ -2972,7 +3007,7 @@ IL2CPP_EXTERN_C IL2CPP_METHOD_ATTR void LevelController_AtualizarUI_m828462D6F81
 		s_Il2CppMethodInitialized = true;
 	}
 	{
-		//<source_info:C:/Users/Hericle/Documents/Corre-Caramelo/Assets/Scripits/LevelController.cs:91>
+		//<source_info:C:/Users/Hericle/Documents/Corre-Caramelo/Assets/Scripits/LevelController.cs:103>
 		TMP_Text_tE8D677872D43AD4B2AAF0D6101692A17D0B251A9* L_0 = __this->___scoreText;
 		il2cpp_codegen_runtime_class_init_inline(Object_tC12DECB6760A7F2CBF65D9DCF18D044C2D97152C_il2cpp_TypeInfo_var);
 		bool L_1;
@@ -2983,7 +3018,7 @@ IL2CPP_EXTERN_C IL2CPP_METHOD_ATTR void LevelController_AtualizarUI_m828462D6F81
 		}
 	}
 	{
-		//<source_info:C:/Users/Hericle/Documents/Corre-Caramelo/Assets/Scripits/LevelController.cs:91>
+		//<source_info:C:/Users/Hericle/Documents/Corre-Caramelo/Assets/Scripits/LevelController.cs:103>
 		TMP_Text_tE8D677872D43AD4B2AAF0D6101692A17D0B251A9* L_2 = __this->___scoreText;
 		int32_t* L_3 = (int32_t*)(&__this->___ossosColetados);
 		String_t* L_4;
@@ -2999,7 +3034,7 @@ IL2CPP_EXTERN_C IL2CPP_METHOD_ATTR void LevelController_AtualizarUI_m828462D6F81
 
 IL_003e:
 	{
-		//<source_info:C:/Users/Hericle/Documents/Corre-Caramelo/Assets/Scripits/LevelController.cs:92>
+		//<source_info:C:/Users/Hericle/Documents/Corre-Caramelo/Assets/Scripits/LevelController.cs:104>
 		TMP_Text_tE8D677872D43AD4B2AAF0D6101692A17D0B251A9* L_8 = __this->___levelText;
 		il2cpp_codegen_runtime_class_init_inline(Object_tC12DECB6760A7F2CBF65D9DCF18D044C2D97152C_il2cpp_TypeInfo_var);
 		bool L_9;
@@ -3010,7 +3045,7 @@ IL_003e:
 		}
 	}
 	{
-		//<source_info:C:/Users/Hericle/Documents/Corre-Caramelo/Assets/Scripits/LevelController.cs:92>
+		//<source_info:C:/Users/Hericle/Documents/Corre-Caramelo/Assets/Scripits/LevelController.cs:104>
 		TMP_Text_tE8D677872D43AD4B2AAF0D6101692A17D0B251A9* L_10 = __this->___levelText;
 		int32_t* L_11 = (int32_t*)(&__this->___nivelAtual);
 		String_t* L_12;
@@ -3023,11 +3058,11 @@ IL_003e:
 
 IL_006c:
 	{
-		//<source_info:C:/Users/Hericle/Documents/Corre-Caramelo/Assets/Scripits/LevelController.cs:93>
+		//<source_info:C:/Users/Hericle/Documents/Corre-Caramelo/Assets/Scripits/LevelController.cs:105>
 		return;
 	}
 }
-// Method Definition Index: 71573
+// Method Definition Index: 71581
 IL2CPP_EXTERN_C IL2CPP_METHOD_ATTR void LevelController_FinalizarJogo_m2056B112E9791DECFD424EE1C0462C4BF2971EFD (LevelController_t509E7CB90C17A4D233A7564A3857D3FE82ED1640* __this, bool ___0_vitoria, const RuntimeMethod* method) 
 {
 	static bool s_Il2CppMethodInitialized;
@@ -3039,25 +3074,25 @@ IL2CPP_EXTERN_C IL2CPP_METHOD_ATTR void LevelController_FinalizarJogo_m2056B112E
 	}
 	int32_t V_0 = 0;
 	{
-		//<source_info:C:/Users/Hericle/Documents/Corre-Caramelo/Assets/Scripits/LevelController.cs:97>
+		//<source_info:C:/Users/Hericle/Documents/Corre-Caramelo/Assets/Scripits/LevelController.cs:109>
 		__this->___isGameOver = (bool)1;
-		//<source_info:C:/Users/Hericle/Documents/Corre-Caramelo/Assets/Scripits/LevelController.cs:98>
+		//<source_info:C:/Users/Hericle/Documents/Corre-Caramelo/Assets/Scripits/LevelController.cs:110>
 		Time_set_timeScale_mEF84EE4B2376A458387648079B426B267862D331((0.0f), NULL);
-		//<source_info:C:/Users/Hericle/Documents/Corre-Caramelo/Assets/Scripits/LevelController.cs:101>
+		//<source_info:C:/Users/Hericle/Documents/Corre-Caramelo/Assets/Scripits/LevelController.cs:112>
 		il2cpp_codegen_runtime_class_init_inline(EventSystem_t61C51380B105BE9D2C39C4F15B7E655659957707_il2cpp_TypeInfo_var);
 		EventSystem_t61C51380B105BE9D2C39C4F15B7E655659957707* L_0;
 		L_0 = EventSystem_get_current_mC87C69FB418563DC2A571A10E2F9DB59A6785016(NULL);
 		NullCheck(L_0);
 		EventSystem_SetSelectedGameObject_m91382EAC4D552C672CC07BE7EB1481F156045280(L_0, (GameObject_t76FEDD663AB33C991A9C9A23129337651094216F*)NULL, NULL);
-		//<source_info:C:/Users/Hericle/Documents/Corre-Caramelo/Assets/Scripits/LevelController.cs:103>
+		//<source_info:C:/Users/Hericle/Documents/Corre-Caramelo/Assets/Scripits/LevelController.cs:114>
 		bool L_1 = ___0_vitoria;
 		if (!L_1)
 		{
-			goto IL_00d5;
+			goto IL_00fa;
 		}
 	}
 	{
-		//<source_info:C:/Users/Hericle/Documents/Corre-Caramelo/Assets/Scripits/LevelController.cs:106>
+		//<source_info:C:/Users/Hericle/Documents/Corre-Caramelo/Assets/Scripits/LevelController.cs:116>
 		RawImage_tFF12F7DB574FBDC1863CF607C7A12A5D9F8D6179* L_2 = __this->___telaDoQRCode;
 		il2cpp_codegen_runtime_class_init_inline(Object_tC12DECB6760A7F2CBF65D9DCF18D044C2D97152C_il2cpp_TypeInfo_var);
 		bool L_3;
@@ -3083,10 +3118,10 @@ IL2CPP_EXTERN_C IL2CPP_METHOD_ATTR void LevelController_FinalizarJogo_m2056B112E
 		}
 	}
 	{
-		//<source_info:C:/Users/Hericle/Documents/Corre-Caramelo/Assets/Scripits/LevelController.cs:108>
+		//<source_info:C:/Users/Hericle/Documents/Corre-Caramelo/Assets/Scripits/LevelController.cs:118>
 		int32_t L_6 = __this->___nivelAtual;
 		V_0 = ((int32_t)il2cpp_codegen_subtract(L_6, 1));
-		//<source_info:C:/Users/Hericle/Documents/Corre-Caramelo/Assets/Scripits/LevelController.cs:109>
+		//<source_info:C:/Users/Hericle/Documents/Corre-Caramelo/Assets/Scripits/LevelController.cs:119>
 		int32_t L_7 = V_0;
 		Texture2DU5BU5D_t05332F1E3F7D4493E304C702201F9BE4F9236191* L_8 = __this->___listaDeQRCodes;
 		NullCheck(L_8);
@@ -3110,7 +3145,7 @@ IL2CPP_EXTERN_C IL2CPP_METHOD_ATTR void LevelController_FinalizarJogo_m2056B112E
 		}
 	}
 	{
-		//<source_info:C:/Users/Hericle/Documents/Corre-Caramelo/Assets/Scripits/LevelController.cs:111>
+		//<source_info:C:/Users/Hericle/Documents/Corre-Caramelo/Assets/Scripits/LevelController.cs:121>
 		RawImage_tFF12F7DB574FBDC1863CF607C7A12A5D9F8D6179* L_14 = __this->___telaDoQRCode;
 		Texture2DU5BU5D_t05332F1E3F7D4493E304C702201F9BE4F9236191* L_15 = __this->___listaDeQRCodes;
 		int32_t L_16 = V_0;
@@ -3119,7 +3154,7 @@ IL2CPP_EXTERN_C IL2CPP_METHOD_ATTR void LevelController_FinalizarJogo_m2056B112E
 		Texture2D_tE6505BC111DD8A424A9DBE8E05D7D09E11FFFCF4* L_18 = (L_15)->GetAt(static_cast<il2cpp_array_size_t>(L_17));
 		NullCheck(L_14);
 		RawImage_set_texture_mC016318C95CC17A826D57DD219DBCB6DFD295C02(L_14, L_18, NULL);
-		//<source_info:C:/Users/Hericle/Documents/Corre-Caramelo/Assets/Scripits/LevelController.cs:112>
+		//<source_info:C:/Users/Hericle/Documents/Corre-Caramelo/Assets/Scripits/LevelController.cs:122>
 		RawImage_tFF12F7DB574FBDC1863CF607C7A12A5D9F8D6179* L_19 = __this->___telaDoQRCode;
 		NullCheck(L_19);
 		GameObject_t76FEDD663AB33C991A9C9A23129337651094216F* L_20;
@@ -3131,7 +3166,7 @@ IL2CPP_EXTERN_C IL2CPP_METHOD_ATTR void LevelController_FinalizarJogo_m2056B112E
 
 IL_008b:
 	{
-		//<source_info:C:/Users/Hericle/Documents/Corre-Caramelo/Assets/Scripits/LevelController.cs:114>
+		//<source_info:C:/Users/Hericle/Documents/Corre-Caramelo/Assets/Scripits/LevelController.cs:124>
 		RawImage_tFF12F7DB574FBDC1863CF607C7A12A5D9F8D6179* L_21 = __this->___telaDoQRCode;
 		NullCheck(L_21);
 		GameObject_t76FEDD663AB33C991A9C9A23129337651094216F* L_22;
@@ -3142,120 +3177,166 @@ IL_008b:
 
 IL_009c:
 	{
-		//<source_info:C:/Users/Hericle/Documents/Corre-Caramelo/Assets/Scripits/LevelController.cs:117>
-		GameObject_t76FEDD663AB33C991A9C9A23129337651094216F* L_23 = __this->___win;
+		//<source_info:C:/Users/Hericle/Documents/Corre-Caramelo/Assets/Scripits/LevelController.cs:128>
+		AudioClip_t5D272C4EB4F2D3ED49F1C346DEA373CF6D585F20* L_23 = __this->___somVitoria;
 		il2cpp_codegen_runtime_class_init_inline(Object_tC12DECB6760A7F2CBF65D9DCF18D044C2D97152C_il2cpp_TypeInfo_var);
 		bool L_24;
 		L_24 = Object_op_Inequality_mD0BE578448EAA61948F25C32F8DD55AB1F778602(L_23, (Object_tC12DECB6760A7F2CBF65D9DCF18D044C2D97152C*)NULL, NULL);
 		if (!L_24)
 		{
-			goto IL_00b6;
+			goto IL_00c1;
 		}
 	}
 	{
-		//<source_info:C:/Users/Hericle/Documents/Corre-Caramelo/Assets/Scripits/LevelController.cs:117>
-		GameObject_t76FEDD663AB33C991A9C9A23129337651094216F* L_25 = __this->___win;
+		//<source_info:C:/Users/Hericle/Documents/Corre-Caramelo/Assets/Scripits/LevelController.cs:128>
+		AudioSource_t871AC2272F896738252F04EE949AEF5B241D3299* L_25 = __this->___tocadorDeAudio;
+		AudioClip_t5D272C4EB4F2D3ED49F1C346DEA373CF6D585F20* L_26 = __this->___somVitoria;
+		float L_27 = __this->___volumeDosSons;
 		NullCheck(L_25);
-		GameObject_SetActive_m638E92E1E75E519E5B24CF150B08CA8E0CDFAB92(L_25, (bool)1, NULL);
+		AudioSource_PlayOneShot_mF6FE95C58996B38EF6E7F7482F95F5E15E0AB30B(L_25, L_26, L_27, NULL);
 	}
 
-IL_00b6:
+IL_00c1:
 	{
-		//<source_info:C:/Users/Hericle/Documents/Corre-Caramelo/Assets/Scripits/LevelController.cs:118>
-		GameObject_t76FEDD663AB33C991A9C9A23129337651094216F* L_26 = __this->___botaoProximaFase;
+		//<source_info:C:/Users/Hericle/Documents/Corre-Caramelo/Assets/Scripits/LevelController.cs:130>
+		GameObject_t76FEDD663AB33C991A9C9A23129337651094216F* L_28 = __this->___win;
 		il2cpp_codegen_runtime_class_init_inline(Object_tC12DECB6760A7F2CBF65D9DCF18D044C2D97152C_il2cpp_TypeInfo_var);
-		bool L_27;
-		L_27 = Object_op_Inequality_mD0BE578448EAA61948F25C32F8DD55AB1F778602(L_26, (Object_tC12DECB6760A7F2CBF65D9DCF18D044C2D97152C*)NULL, NULL);
-		if (!L_27)
+		bool L_29;
+		L_29 = Object_op_Inequality_mD0BE578448EAA61948F25C32F8DD55AB1F778602(L_28, (Object_tC12DECB6760A7F2CBF65D9DCF18D044C2D97152C*)NULL, NULL);
+		if (!L_29)
 		{
-			goto IL_010d;
+			goto IL_00db;
 		}
 	}
 	{
-		//<source_info:C:/Users/Hericle/Documents/Corre-Caramelo/Assets/Scripits/LevelController.cs:118>
+		//<source_info:C:/Users/Hericle/Documents/Corre-Caramelo/Assets/Scripits/LevelController.cs:130>
+		GameObject_t76FEDD663AB33C991A9C9A23129337651094216F* L_30 = __this->___win;
+		NullCheck(L_30);
+		GameObject_SetActive_m638E92E1E75E519E5B24CF150B08CA8E0CDFAB92(L_30, (bool)1, NULL);
+	}
+
+IL_00db:
+	{
+		//<source_info:C:/Users/Hericle/Documents/Corre-Caramelo/Assets/Scripits/LevelController.cs:131>
+		GameObject_t76FEDD663AB33C991A9C9A23129337651094216F* L_31 = __this->___botaoProximaFase;
+		il2cpp_codegen_runtime_class_init_inline(Object_tC12DECB6760A7F2CBF65D9DCF18D044C2D97152C_il2cpp_TypeInfo_var);
+		bool L_32;
+		L_32 = Object_op_Inequality_mD0BE578448EAA61948F25C32F8DD55AB1F778602(L_31, (Object_tC12DECB6760A7F2CBF65D9DCF18D044C2D97152C*)NULL, NULL);
+		if (!L_32)
+		{
+			goto IL_0157;
+		}
+	}
+	{
+		//<source_info:C:/Users/Hericle/Documents/Corre-Caramelo/Assets/Scripits/LevelController.cs:131>
 		il2cpp_codegen_runtime_class_init_inline(EventSystem_t61C51380B105BE9D2C39C4F15B7E655659957707_il2cpp_TypeInfo_var);
-		EventSystem_t61C51380B105BE9D2C39C4F15B7E655659957707* L_28;
-		L_28 = EventSystem_get_current_mC87C69FB418563DC2A571A10E2F9DB59A6785016(NULL);
-		GameObject_t76FEDD663AB33C991A9C9A23129337651094216F* L_29 = __this->___botaoProximaFase;
-		NullCheck(L_28);
-		EventSystem_SetSelectedGameObject_m91382EAC4D552C672CC07BE7EB1481F156045280(L_28, L_29, NULL);
+		EventSystem_t61C51380B105BE9D2C39C4F15B7E655659957707* L_33;
+		L_33 = EventSystem_get_current_mC87C69FB418563DC2A571A10E2F9DB59A6785016(NULL);
+		GameObject_t76FEDD663AB33C991A9C9A23129337651094216F* L_34 = __this->___botaoProximaFase;
+		NullCheck(L_33);
+		EventSystem_SetSelectedGameObject_m91382EAC4D552C672CC07BE7EB1481F156045280(L_33, L_34, NULL);
 		return;
 	}
 
-IL_00d5:
+IL_00fa:
 	{
-		//<source_info:C:/Users/Hericle/Documents/Corre-Caramelo/Assets/Scripits/LevelController.cs:122>
-		GameObject_t76FEDD663AB33C991A9C9A23129337651094216F* L_30 = __this->___gameOver;
+		//<source_info:C:/Users/Hericle/Documents/Corre-Caramelo/Assets/Scripits/LevelController.cs:136>
+		AudioClip_t5D272C4EB4F2D3ED49F1C346DEA373CF6D585F20* L_35 = __this->___somDerrota;
 		il2cpp_codegen_runtime_class_init_inline(Object_tC12DECB6760A7F2CBF65D9DCF18D044C2D97152C_il2cpp_TypeInfo_var);
-		bool L_31;
-		L_31 = Object_op_Inequality_mD0BE578448EAA61948F25C32F8DD55AB1F778602(L_30, (Object_tC12DECB6760A7F2CBF65D9DCF18D044C2D97152C*)NULL, NULL);
-		if (!L_31)
+		bool L_36;
+		L_36 = Object_op_Inequality_mD0BE578448EAA61948F25C32F8DD55AB1F778602(L_35, (Object_tC12DECB6760A7F2CBF65D9DCF18D044C2D97152C*)NULL, NULL);
+		if (!L_36)
 		{
-			goto IL_00ef;
+			goto IL_011f;
 		}
 	}
 	{
-		//<source_info:C:/Users/Hericle/Documents/Corre-Caramelo/Assets/Scripits/LevelController.cs:122>
-		GameObject_t76FEDD663AB33C991A9C9A23129337651094216F* L_32 = __this->___gameOver;
-		NullCheck(L_32);
-		GameObject_SetActive_m638E92E1E75E519E5B24CF150B08CA8E0CDFAB92(L_32, (bool)1, NULL);
+		//<source_info:C:/Users/Hericle/Documents/Corre-Caramelo/Assets/Scripits/LevelController.cs:136>
+		AudioSource_t871AC2272F896738252F04EE949AEF5B241D3299* L_37 = __this->___tocadorDeAudio;
+		AudioClip_t5D272C4EB4F2D3ED49F1C346DEA373CF6D585F20* L_38 = __this->___somDerrota;
+		float L_39 = __this->___volumeDosSons;
+		NullCheck(L_37);
+		AudioSource_PlayOneShot_mF6FE95C58996B38EF6E7F7482F95F5E15E0AB30B(L_37, L_38, L_39, NULL);
 	}
 
-IL_00ef:
+IL_011f:
 	{
-		//<source_info:C:/Users/Hericle/Documents/Corre-Caramelo/Assets/Scripits/LevelController.cs:123>
-		GameObject_t76FEDD663AB33C991A9C9A23129337651094216F* L_33 = __this->___botaoReiniciar;
+		//<source_info:C:/Users/Hericle/Documents/Corre-Caramelo/Assets/Scripits/LevelController.cs:138>
+		GameObject_t76FEDD663AB33C991A9C9A23129337651094216F* L_40 = __this->___gameOver;
 		il2cpp_codegen_runtime_class_init_inline(Object_tC12DECB6760A7F2CBF65D9DCF18D044C2D97152C_il2cpp_TypeInfo_var);
-		bool L_34;
-		L_34 = Object_op_Inequality_mD0BE578448EAA61948F25C32F8DD55AB1F778602(L_33, (Object_tC12DECB6760A7F2CBF65D9DCF18D044C2D97152C*)NULL, NULL);
-		if (!L_34)
+		bool L_41;
+		L_41 = Object_op_Inequality_mD0BE578448EAA61948F25C32F8DD55AB1F778602(L_40, (Object_tC12DECB6760A7F2CBF65D9DCF18D044C2D97152C*)NULL, NULL);
+		if (!L_41)
 		{
-			goto IL_010d;
+			goto IL_0139;
 		}
 	}
 	{
-		//<source_info:C:/Users/Hericle/Documents/Corre-Caramelo/Assets/Scripits/LevelController.cs:123>
+		//<source_info:C:/Users/Hericle/Documents/Corre-Caramelo/Assets/Scripits/LevelController.cs:138>
+		GameObject_t76FEDD663AB33C991A9C9A23129337651094216F* L_42 = __this->___gameOver;
+		NullCheck(L_42);
+		GameObject_SetActive_m638E92E1E75E519E5B24CF150B08CA8E0CDFAB92(L_42, (bool)1, NULL);
+	}
+
+IL_0139:
+	{
+		//<source_info:C:/Users/Hericle/Documents/Corre-Caramelo/Assets/Scripits/LevelController.cs:139>
+		GameObject_t76FEDD663AB33C991A9C9A23129337651094216F* L_43 = __this->___botaoReiniciar;
+		il2cpp_codegen_runtime_class_init_inline(Object_tC12DECB6760A7F2CBF65D9DCF18D044C2D97152C_il2cpp_TypeInfo_var);
+		bool L_44;
+		L_44 = Object_op_Inequality_mD0BE578448EAA61948F25C32F8DD55AB1F778602(L_43, (Object_tC12DECB6760A7F2CBF65D9DCF18D044C2D97152C*)NULL, NULL);
+		if (!L_44)
+		{
+			goto IL_0157;
+		}
+	}
+	{
+		//<source_info:C:/Users/Hericle/Documents/Corre-Caramelo/Assets/Scripits/LevelController.cs:139>
 		il2cpp_codegen_runtime_class_init_inline(EventSystem_t61C51380B105BE9D2C39C4F15B7E655659957707_il2cpp_TypeInfo_var);
-		EventSystem_t61C51380B105BE9D2C39C4F15B7E655659957707* L_35;
-		L_35 = EventSystem_get_current_mC87C69FB418563DC2A571A10E2F9DB59A6785016(NULL);
-		GameObject_t76FEDD663AB33C991A9C9A23129337651094216F* L_36 = __this->___botaoReiniciar;
-		NullCheck(L_35);
-		EventSystem_SetSelectedGameObject_m91382EAC4D552C672CC07BE7EB1481F156045280(L_35, L_36, NULL);
+		EventSystem_t61C51380B105BE9D2C39C4F15B7E655659957707* L_45;
+		L_45 = EventSystem_get_current_mC87C69FB418563DC2A571A10E2F9DB59A6785016(NULL);
+		GameObject_t76FEDD663AB33C991A9C9A23129337651094216F* L_46 = __this->___botaoReiniciar;
+		NullCheck(L_45);
+		EventSystem_SetSelectedGameObject_m91382EAC4D552C672CC07BE7EB1481F156045280(L_45, L_46, NULL);
 	}
 
-IL_010d:
+IL_0157:
 	{
-		//<source_info:C:/Users/Hericle/Documents/Corre-Caramelo/Assets/Scripits/LevelController.cs:125>
+		//<source_info:C:/Users/Hericle/Documents/Corre-Caramelo/Assets/Scripits/LevelController.cs:141>
 		return;
 	}
 }
-// Method Definition Index: 71574
+// Method Definition Index: 71582
 IL2CPP_EXTERN_C IL2CPP_METHOD_ATTR void LevelController_ProximaFase_mD1FA391C2E3864660EB3A556FCE58E2BC74B2C9C (LevelController_t509E7CB90C17A4D233A7564A3857D3FE82ED1640* __this, const RuntimeMethod* method) 
 {
 	static bool s_Il2CppMethodInitialized;
 	if (!s_Il2CppMethodInitialized)
 	{
 		il2cpp_codegen_initialize_runtime_metadata((uintptr_t*)&SceneManager_tA0EF56A88ACA4A15731AF7FDC10A869FA4C698FA_il2cpp_TypeInfo_var);
+		il2cpp_codegen_initialize_runtime_metadata((uintptr_t*)&_stringLiteralB142EEFB611C289D4F0231086BB86F5A0E91762F);
 		s_Il2CppMethodInitialized = true;
 	}
 	Scene_tA1DC762B79745EB5140F054C884855B922318356 V_0;
 	memset((&V_0), 0, sizeof(V_0));
 	{
-		//<source_info:C:/Users/Hericle/Documents/Corre-Caramelo/Assets/Scripits/LevelController.cs:127>
+		//<source_info:C:/Users/Hericle/Documents/Corre-Caramelo/Assets/Scripits/LevelController.cs:145>
+		int32_t L_0 = __this->___nivelAtual;
+		PlayerPrefs_SetInt_m956D3E2DB966F20CF42F842880DDF9E2BE94D948(_stringLiteralB142EEFB611C289D4F0231086BB86F5A0E91762F, ((int32_t)il2cpp_codegen_add(L_0, 1)), NULL);
+		//<source_info:C:/Users/Hericle/Documents/Corre-Caramelo/Assets/Scripits/LevelController.cs:146>
 		Time_set_timeScale_mEF84EE4B2376A458387648079B426B267862D331((1.0f), NULL);
-		//<source_info:C:/Users/Hericle/Documents/Corre-Caramelo/Assets/Scripits/LevelController.cs:127>
+		//<source_info:C:/Users/Hericle/Documents/Corre-Caramelo/Assets/Scripits/LevelController.cs:147>
 		il2cpp_codegen_runtime_class_init_inline(SceneManager_tA0EF56A88ACA4A15731AF7FDC10A869FA4C698FA_il2cpp_TypeInfo_var);
-		Scene_tA1DC762B79745EB5140F054C884855B922318356 L_0;
-		L_0 = SceneManager_GetActiveScene_m0B320EC4302F51A71495D1CCD1A0FF9C2ED1FDC8(NULL);
-		V_0 = L_0;
-		String_t* L_1;
-		L_1 = Scene_get_name_m3C818DFA663E159274DAD823B780C7616C5E2A8C((&V_0), NULL);
-		SceneManager_LoadScene_mBB3DBC1601A21F8F4E8A5D68FED30EA9412F218E(L_1, NULL);
-		//<source_info:C:/Users/Hericle/Documents/Corre-Caramelo/Assets/Scripits/LevelController.cs:127>
+		Scene_tA1DC762B79745EB5140F054C884855B922318356 L_1;
+		L_1 = SceneManager_GetActiveScene_m0B320EC4302F51A71495D1CCD1A0FF9C2ED1FDC8(NULL);
+		V_0 = L_1;
+		String_t* L_2;
+		L_2 = Scene_get_name_m3C818DFA663E159274DAD823B780C7616C5E2A8C((&V_0), NULL);
+		SceneManager_LoadScene_mBB3DBC1601A21F8F4E8A5D68FED30EA9412F218E(L_2, NULL);
+		//<source_info:C:/Users/Hericle/Documents/Corre-Caramelo/Assets/Scripits/LevelController.cs:148>
 		return;
 	}
 }
-// Method Definition Index: 71575
+// Method Definition Index: 71583
 IL2CPP_EXTERN_C IL2CPP_METHOD_ATTR void LevelController_TentarNovamente_m642DADDF8B3316CE36C736BA2B755543C104040B (LevelController_t509E7CB90C17A4D233A7564A3857D3FE82ED1640* __this, const RuntimeMethod* method) 
 {
 	static bool s_Il2CppMethodInitialized;
@@ -3267,9 +3348,9 @@ IL2CPP_EXTERN_C IL2CPP_METHOD_ATTR void LevelController_TentarNovamente_m642DADD
 	Scene_tA1DC762B79745EB5140F054C884855B922318356 V_0;
 	memset((&V_0), 0, sizeof(V_0));
 	{
-		//<source_info:C:/Users/Hericle/Documents/Corre-Caramelo/Assets/Scripits/LevelController.cs:128>
+		//<source_info:C:/Users/Hericle/Documents/Corre-Caramelo/Assets/Scripits/LevelController.cs:152>
 		Time_set_timeScale_mEF84EE4B2376A458387648079B426B267862D331((1.0f), NULL);
-		//<source_info:C:/Users/Hericle/Documents/Corre-Caramelo/Assets/Scripits/LevelController.cs:128>
+		//<source_info:C:/Users/Hericle/Documents/Corre-Caramelo/Assets/Scripits/LevelController.cs:153>
 		il2cpp_codegen_runtime_class_init_inline(SceneManager_tA0EF56A88ACA4A15731AF7FDC10A869FA4C698FA_il2cpp_TypeInfo_var);
 		Scene_tA1DC762B79745EB5140F054C884855B922318356 L_0;
 		L_0 = SceneManager_GetActiveScene_m0B320EC4302F51A71495D1CCD1A0FF9C2ED1FDC8(NULL);
@@ -3277,11 +3358,11 @@ IL2CPP_EXTERN_C IL2CPP_METHOD_ATTR void LevelController_TentarNovamente_m642DADD
 		String_t* L_1;
 		L_1 = Scene_get_name_m3C818DFA663E159274DAD823B780C7616C5E2A8C((&V_0), NULL);
 		SceneManager_LoadScene_mBB3DBC1601A21F8F4E8A5D68FED30EA9412F218E(L_1, NULL);
-		//<source_info:C:/Users/Hericle/Documents/Corre-Caramelo/Assets/Scripits/LevelController.cs:128>
+		//<source_info:C:/Users/Hericle/Documents/Corre-Caramelo/Assets/Scripits/LevelController.cs:154>
 		return;
 	}
 }
-// Method Definition Index: 71576
+// Method Definition Index: 71584
 IL2CPP_EXTERN_C IL2CPP_METHOD_ATTR void LevelController_VoltarAoMenu_mE9BE1CB47E3255E2433CCC0E56C17870472D042A (LevelController_t509E7CB90C17A4D233A7564A3857D3FE82ED1640* __this, const RuntimeMethod* method) 
 {
 	static bool s_Il2CppMethodInitialized;
@@ -3292,20 +3373,22 @@ IL2CPP_EXTERN_C IL2CPP_METHOD_ATTR void LevelController_VoltarAoMenu_mE9BE1CB47E
 		s_Il2CppMethodInitialized = true;
 	}
 	{
-		//<source_info:C:/Users/Hericle/Documents/Corre-Caramelo/Assets/Scripits/LevelController.cs:129>
+		//<source_info:C:/Users/Hericle/Documents/Corre-Caramelo/Assets/Scripits/LevelController.cs:158>
 		Time_set_timeScale_mEF84EE4B2376A458387648079B426B267862D331((1.0f), NULL);
-		//<source_info:C:/Users/Hericle/Documents/Corre-Caramelo/Assets/Scripits/LevelController.cs:129>
+		//<source_info:C:/Users/Hericle/Documents/Corre-Caramelo/Assets/Scripits/LevelController.cs:159>
 		il2cpp_codegen_runtime_class_init_inline(SceneManager_tA0EF56A88ACA4A15731AF7FDC10A869FA4C698FA_il2cpp_TypeInfo_var);
 		SceneManager_LoadScene_mBB3DBC1601A21F8F4E8A5D68FED30EA9412F218E(_stringLiteral0C10E47675493434D04CD8025C8303AF94F7BA5A, NULL);
-		//<source_info:C:/Users/Hericle/Documents/Corre-Caramelo/Assets/Scripits/LevelController.cs:129>
+		//<source_info:C:/Users/Hericle/Documents/Corre-Caramelo/Assets/Scripits/LevelController.cs:160>
 		return;
 	}
 }
-// Method Definition Index: 71577
+// Method Definition Index: 71585
 IL2CPP_EXTERN_C IL2CPP_METHOD_ATTR void LevelController__ctor_mF2FFC89969499271EE36668A45E3E064C8F994E9 (LevelController_t509E7CB90C17A4D233A7564A3857D3FE82ED1640* __this, const RuntimeMethod* method) 
 {
 	{
-		//<source_info:C:/Users/Hericle/Documents/Corre-Caramelo/Assets/Scripits/LevelController.cs:27>
+		//<source_info:C:/Users/Hericle/Documents/Corre-Caramelo/Assets/Scripits/LevelController.cs:30>
+		__this->___volumeDosSons = (0.800000012f);
+		//<source_info:C:/Users/Hericle/Documents/Corre-Caramelo/Assets/Scripits/LevelController.cs:33>
 		__this->___tempoTotal = (60.0f);
 		MonoBehaviour__ctor_m592DB0105CA0BC97AA1C5F4AD27B12D68A3B7C1E(__this, NULL);
 		return;
@@ -3319,7 +3402,7 @@ IL2CPP_EXTERN_C IL2CPP_METHOD_ATTR void LevelController__ctor_mF2FFC89969499271E
 #pragma clang diagnostic ignored "-Winvalid-offsetof"
 #pragma clang diagnostic ignored "-Wunused-variable"
 #endif
-// Method Definition Index: 71578
+// Method Definition Index: 71586
 IL2CPP_EXTERN_C IL2CPP_METHOD_ATTR void LinkManager_AbrirInstagram_m298CE8938BEA384204C630D47C45337A1CEF0547 (LinkManager_t7D48E68D127A7C6C28AFEBE37F58F15DDA775E65* __this, const RuntimeMethod* method) 
 {
 	static bool s_Il2CppMethodInitialized;
@@ -3337,7 +3420,7 @@ IL2CPP_EXTERN_C IL2CPP_METHOD_ATTR void LinkManager_AbrirInstagram_m298CE8938BEA
 		return;
 	}
 }
-// Method Definition Index: 71579
+// Method Definition Index: 71587
 IL2CPP_EXTERN_C IL2CPP_METHOD_ATTR void LinkManager__ctor_mCD2E4EA6762E0EC2F0C95D12D9376ADDB27A986B (LinkManager_t7D48E68D127A7C6C28AFEBE37F58F15DDA775E65* __this, const RuntimeMethod* method) 
 {
 	{
@@ -3353,7 +3436,7 @@ IL2CPP_EXTERN_C IL2CPP_METHOD_ATTR void LinkManager__ctor_mCD2E4EA6762E0EC2F0C95
 #pragma clang diagnostic ignored "-Winvalid-offsetof"
 #pragma clang diagnostic ignored "-Wunused-variable"
 #endif
-// Method Definition Index: 71580
+// Method Definition Index: 71588
 IL2CPP_EXTERN_C IL2CPP_METHOD_ATTR void MainMenuController_Start_m26371D166488BA9A98CE757741C6B0A7503C2E9E (MainMenuController_tC1AE80D8996B3AE38DACF2ABDAF9FC95E0293569* __this, const RuntimeMethod* method) 
 {
 	{
@@ -3366,7 +3449,7 @@ IL2CPP_EXTERN_C IL2CPP_METHOD_ATTR void MainMenuController_Start_m26371D166488BA
 		return;
 	}
 }
-// Method Definition Index: 71581
+// Method Definition Index: 71589
 IL2CPP_EXTERN_C IL2CPP_METHOD_ATTR RuntimeObject* MainMenuController_SelecionarBotao_m22BEDC7A47C00541F2D8DDC52CCE3DB518F23708 (MainMenuController_tC1AE80D8996B3AE38DACF2ABDAF9FC95E0293569* __this, const RuntimeMethod* method) 
 {
 	static bool s_Il2CppMethodInitialized;
@@ -3385,7 +3468,7 @@ IL2CPP_EXTERN_C IL2CPP_METHOD_ATTR RuntimeObject* MainMenuController_SelecionarB
 		return L_1;
 	}
 }
-// Method Definition Index: 71582
+// Method Definition Index: 71590
 IL2CPP_EXTERN_C IL2CPP_METHOD_ATTR void MainMenuController_Jogar_m2E0A23DDC31F08B448827628FCFABBDFFF0E12A1 (MainMenuController_tC1AE80D8996B3AE38DACF2ABDAF9FC95E0293569* __this, const RuntimeMethod* method) 
 {
 	static bool s_Il2CppMethodInitialized;
@@ -3406,7 +3489,7 @@ IL2CPP_EXTERN_C IL2CPP_METHOD_ATTR void MainMenuController_Jogar_m2E0A23DDC31F08
 		return;
 	}
 }
-// Method Definition Index: 71583
+// Method Definition Index: 71591
 IL2CPP_EXTERN_C IL2CPP_METHOD_ATTR void MainMenuController_Sair_mDD22F5DAA75EDAD1AA0F0CEB5BF714BADD9526C2 (MainMenuController_tC1AE80D8996B3AE38DACF2ABDAF9FC95E0293569* __this, const RuntimeMethod* method) 
 {
 	static bool s_Il2CppMethodInitialized;
@@ -3423,7 +3506,7 @@ IL2CPP_EXTERN_C IL2CPP_METHOD_ATTR void MainMenuController_Sair_mDD22F5DAA75EDAD
 		return;
 	}
 }
-// Method Definition Index: 71584
+// Method Definition Index: 71592
 IL2CPP_EXTERN_C IL2CPP_METHOD_ATTR void MainMenuController__ctor_m9727FC638FDF6BDF302E10C6351846B395013EA4 (MainMenuController_tC1AE80D8996B3AE38DACF2ABDAF9FC95E0293569* __this, const RuntimeMethod* method) 
 {
 	{
@@ -3439,7 +3522,7 @@ IL2CPP_EXTERN_C IL2CPP_METHOD_ATTR void MainMenuController__ctor_m9727FC638FDF6B
 #pragma clang diagnostic ignored "-Winvalid-offsetof"
 #pragma clang diagnostic ignored "-Wunused-variable"
 #endif
-// Method Definition Index: 71585
+// Method Definition Index: 71593
 IL2CPP_EXTERN_C IL2CPP_METHOD_ATTR void U3CSelecionarBotaoU3Ed__2__ctor_m51055EDF533E48814BD5F9C5974DA18079100FAD (U3CSelecionarBotaoU3Ed__2_t1EE003D53F46239035761BCA3527AA96F17DD32A* __this, int32_t ___0_U3CU3E1__state, const RuntimeMethod* method) 
 {
 	{
@@ -3449,14 +3532,14 @@ IL2CPP_EXTERN_C IL2CPP_METHOD_ATTR void U3CSelecionarBotaoU3Ed__2__ctor_m51055ED
 		return;
 	}
 }
-// Method Definition Index: 71586
+// Method Definition Index: 71594
 IL2CPP_EXTERN_C IL2CPP_METHOD_ATTR void U3CSelecionarBotaoU3Ed__2_System_IDisposable_Dispose_m5B3E9BD37288CAEE764A961B1D29D7712A4FA9FC (U3CSelecionarBotaoU3Ed__2_t1EE003D53F46239035761BCA3527AA96F17DD32A* __this, const RuntimeMethod* method) 
 {
 	{
 		return;
 	}
 }
-// Method Definition Index: 71587
+// Method Definition Index: 71595
 IL2CPP_EXTERN_C IL2CPP_METHOD_ATTR bool U3CSelecionarBotaoU3Ed__2_MoveNext_m0E50B9EF27931FB05FC511B5F0E0F949398FB4CA (U3CSelecionarBotaoU3Ed__2_t1EE003D53F46239035761BCA3527AA96F17DD32A* __this, const RuntimeMethod* method) 
 {
 	static bool s_Il2CppMethodInitialized;
@@ -3539,7 +3622,7 @@ IL_005e:
 		return (bool)0;
 	}
 }
-// Method Definition Index: 71588
+// Method Definition Index: 71596
 IL2CPP_EXTERN_C IL2CPP_METHOD_ATTR RuntimeObject* U3CSelecionarBotaoU3Ed__2_System_Collections_Generic_IEnumeratorU3CSystem_ObjectU3E_get_Current_m3021AA49C043D9F80A4DE138587D72A079C41370 (U3CSelecionarBotaoU3Ed__2_t1EE003D53F46239035761BCA3527AA96F17DD32A* __this, const RuntimeMethod* method) 
 {
 	{
@@ -3547,7 +3630,7 @@ IL2CPP_EXTERN_C IL2CPP_METHOD_ATTR RuntimeObject* U3CSelecionarBotaoU3Ed__2_Syst
 		return L_0;
 	}
 }
-// Method Definition Index: 71589
+// Method Definition Index: 71597
 IL2CPP_EXTERN_C IL2CPP_METHOD_ATTR void U3CSelecionarBotaoU3Ed__2_System_Collections_IEnumerator_Reset_m7AB8C32EADC1E39D575DBE24DA6276059A08DBAC (U3CSelecionarBotaoU3Ed__2_t1EE003D53F46239035761BCA3527AA96F17DD32A* __this, const RuntimeMethod* method) 
 {
 	{
@@ -3556,7 +3639,7 @@ IL2CPP_EXTERN_C IL2CPP_METHOD_ATTR void U3CSelecionarBotaoU3Ed__2_System_Collect
 		IL2CPP_RAISE_MANAGED_EXCEPTION(L_0, ((RuntimeMethod*)il2cpp_codegen_initialize_runtime_metadata_inline((uintptr_t*)&U3CSelecionarBotaoU3Ed__2_System_Collections_IEnumerator_Reset_m7AB8C32EADC1E39D575DBE24DA6276059A08DBAC_RuntimeMethod_var)));
 	}
 }
-// Method Definition Index: 71590
+// Method Definition Index: 71598
 IL2CPP_EXTERN_C IL2CPP_METHOD_ATTR RuntimeObject* U3CSelecionarBotaoU3Ed__2_System_Collections_IEnumerator_get_Current_mABD3AC360B4C608296B746C68716F5F955EBAD93 (U3CSelecionarBotaoU3Ed__2_t1EE003D53F46239035761BCA3527AA96F17DD32A* __this, const RuntimeMethod* method) 
 {
 	{
@@ -3572,7 +3655,7 @@ IL2CPP_EXTERN_C IL2CPP_METHOD_ATTR RuntimeObject* U3CSelecionarBotaoU3Ed__2_Syst
 #pragma clang diagnostic ignored "-Winvalid-offsetof"
 #pragma clang diagnostic ignored "-Wunused-variable"
 #endif
-// Method Definition Index: 71591
+// Method Definition Index: 71599
 IL2CPP_EXTERN_C IL2CPP_METHOD_ATTR void Perseguidor_Start_m5353B78DE92326B938C0B42766D6F1764E557880 (Perseguidor_t7E400E44FD8AAFB5E57811F4695C61336810F0C7* __this, const RuntimeMethod* method) 
 {
 	static bool s_Il2CppMethodInitialized;
@@ -3630,7 +3713,7 @@ IL_0020:
 		return;
 	}
 }
-// Method Definition Index: 71592
+// Method Definition Index: 71600
 IL2CPP_EXTERN_C IL2CPP_METHOD_ATTR void Perseguidor_FixedUpdate_mD307700360826C15921434B1385776D381386636 (Perseguidor_t7E400E44FD8AAFB5E57811F4695C61336810F0C7* __this, const RuntimeMethod* method) 
 {
 	static bool s_Il2CppMethodInitialized;
@@ -3895,7 +3978,7 @@ IL_0195:
 		return;
 	}
 }
-// Method Definition Index: 71593
+// Method Definition Index: 71601
 IL2CPP_EXTERN_C IL2CPP_METHOD_ATTR void Perseguidor__ctor_m4B8F089493E6DDC9F909A4EE7B54C27841008444 (Perseguidor_t7E400E44FD8AAFB5E57811F4695C61336810F0C7* __this, const RuntimeMethod* method) 
 {
 	{
@@ -3919,7 +4002,7 @@ IL2CPP_EXTERN_C IL2CPP_METHOD_ATTR void Perseguidor__ctor_m4B8F089493E6DDC9F909A
 #pragma clang diagnostic ignored "-Winvalid-offsetof"
 #pragma clang diagnostic ignored "-Wunused-variable"
 #endif
-// Method Definition Index: 71594
+// Method Definition Index: 71602
 IL2CPP_EXTERN_C IL2CPP_METHOD_ATTR void PetiscoEspecial_OnTriggerEnter2D_m7A6EF66DE8463F17413787D0A926B10376EF11B1 (PetiscoEspecial_t47469B2FD6F9F31105D4BAF0D40064C1E31599EB* __this, Collider2D_t6A17BA7734600EF3F26588E9ED903617D5B8EB52* ___0_collision, const RuntimeMethod* method) 
 {
 	static bool s_Il2CppMethodInitialized;
@@ -4010,7 +4093,7 @@ IL_0068:
 		return;
 	}
 }
-// Method Definition Index: 71595
+// Method Definition Index: 71603
 IL2CPP_EXTERN_C IL2CPP_METHOD_ATTR void PetiscoEspecial__ctor_m92ED708222E8B2A9F1D8B5745E9A2175DE200E3A (PetiscoEspecial_t47469B2FD6F9F31105D4BAF0D40064C1E31599EB* __this, const RuntimeMethod* method) 
 {
 	{
@@ -4032,7 +4115,7 @@ IL2CPP_EXTERN_C IL2CPP_METHOD_ATTR void PetiscoEspecial__ctor_m92ED708222E8B2A9F
 #pragma clang diagnostic ignored "-Winvalid-offsetof"
 #pragma clang diagnostic ignored "-Wunused-variable"
 #endif
-// Method Definition Index: 71596
+// Method Definition Index: 71604
 IL2CPP_EXTERN_C IL2CPP_METHOD_ATTR void Player_Start_mC31CF4F40DDEA35C5E39E8C43EC37284AE7C453D (Player_tF98BD09D3495D2FF1922E5D34866AEAC6AE2DF74* __this, const RuntimeMethod* method) 
 {
 	static bool s_Il2CppMethodInitialized;
@@ -4081,7 +4164,7 @@ IL_0042:
 		return;
 	}
 }
-// Method Definition Index: 71597
+// Method Definition Index: 71605
 IL2CPP_EXTERN_C IL2CPP_METHOD_ATTR void Player_FixedUpdate_mEDDB0539FCD5145298CB87D4592DFFF98503AF9B (Player_tF98BD09D3495D2FF1922E5D34866AEAC6AE2DF74* __this, const RuntimeMethod* method) 
 {
 	static bool s_Il2CppMethodInitialized;
@@ -4323,7 +4406,7 @@ IL_016e:
 		return;
 	}
 }
-// Method Definition Index: 71598
+// Method Definition Index: 71606
 IL2CPP_EXTERN_C IL2CPP_METHOD_ATTR void Player_OnMove_mE479803C151BEF61894120A44548F9149C921D40 (Player_tF98BD09D3495D2FF1922E5D34866AEAC6AE2DF74* __this, InputValue_t4F053958518BDF6FD85C55F31B0597C9521B4231* ___0_inputValue, const RuntimeMethod* method) 
 {
 	static bool s_Il2CppMethodInitialized;
@@ -4343,7 +4426,7 @@ IL2CPP_EXTERN_C IL2CPP_METHOD_ATTR void Player_OnMove_mE479803C151BEF61894120A44
 		return;
 	}
 }
-// Method Definition Index: 71599
+// Method Definition Index: 71607
 IL2CPP_EXTERN_C IL2CPP_METHOD_ATTR void Player_AumentarVelocidade_m40E75BD5D47450F7C6A0A0DAA4C20B877AA4883D (Player_tF98BD09D3495D2FF1922E5D34866AEAC6AE2DF74* __this, float ___0_bonus, const RuntimeMethod* method) 
 {
 	{
@@ -4355,7 +4438,7 @@ IL2CPP_EXTERN_C IL2CPP_METHOD_ATTR void Player_AumentarVelocidade_m40E75BD5D4745
 		return;
 	}
 }
-// Method Definition Index: 71600
+// Method Definition Index: 71608
 IL2CPP_EXTERN_C IL2CPP_METHOD_ATTR void Player_AtivarBonusVelocidade_m7A73266A3B38572B8E3D619078800A9282EE19E9 (Player_tF98BD09D3495D2FF1922E5D34866AEAC6AE2DF74* __this, float ___0_bonus, float ___1_tempo, const RuntimeMethod* method) 
 {
 	{
@@ -4370,7 +4453,7 @@ IL2CPP_EXTERN_C IL2CPP_METHOD_ATTR void Player_AtivarBonusVelocidade_m7A73266A3B
 		return;
 	}
 }
-// Method Definition Index: 71601
+// Method Definition Index: 71609
 IL2CPP_EXTERN_C IL2CPP_METHOD_ATTR RuntimeObject* Player_RotinaVelocidade_mFFA89EE8BDCF019F903B0529F500C2B5FCA9CC70 (Player_tF98BD09D3495D2FF1922E5D34866AEAC6AE2DF74* __this, float ___0_bonus, float ___1_tempo, const RuntimeMethod* method) 
 {
 	static bool s_Il2CppMethodInitialized;
@@ -4397,7 +4480,7 @@ IL2CPP_EXTERN_C IL2CPP_METHOD_ATTR RuntimeObject* Player_RotinaVelocidade_mFFA89
 		return L_4;
 	}
 }
-// Method Definition Index: 71602
+// Method Definition Index: 71610
 IL2CPP_EXTERN_C IL2CPP_METHOD_ATTR void Player__ctor_m0A83E0706592FC871B0CF188B37AFC6649F3D85D (Player_tF98BD09D3495D2FF1922E5D34866AEAC6AE2DF74* __this, const RuntimeMethod* method) 
 {
 	{
@@ -4419,7 +4502,7 @@ IL2CPP_EXTERN_C IL2CPP_METHOD_ATTR void Player__ctor_m0A83E0706592FC871B0CF188B3
 #pragma clang diagnostic ignored "-Winvalid-offsetof"
 #pragma clang diagnostic ignored "-Wunused-variable"
 #endif
-// Method Definition Index: 71603
+// Method Definition Index: 71611
 IL2CPP_EXTERN_C IL2CPP_METHOD_ATTR void U3CRotinaVelocidadeU3Ed__11__ctor_m5004168EB3E76981B06A320A326AD8EECC97F120 (U3CRotinaVelocidadeU3Ed__11_tEDA9B3573CB27A35A4DC91E422BD6BFAF8833693* __this, int32_t ___0_U3CU3E1__state, const RuntimeMethod* method) 
 {
 	{
@@ -4429,14 +4512,14 @@ IL2CPP_EXTERN_C IL2CPP_METHOD_ATTR void U3CRotinaVelocidadeU3Ed__11__ctor_m50041
 		return;
 	}
 }
-// Method Definition Index: 71604
+// Method Definition Index: 71612
 IL2CPP_EXTERN_C IL2CPP_METHOD_ATTR void U3CRotinaVelocidadeU3Ed__11_System_IDisposable_Dispose_mCB099CA0BD8A95449AA7652A10413D92D9598320 (U3CRotinaVelocidadeU3Ed__11_tEDA9B3573CB27A35A4DC91E422BD6BFAF8833693* __this, const RuntimeMethod* method) 
 {
 	{
 		return;
 	}
 }
-// Method Definition Index: 71605
+// Method Definition Index: 71613
 IL2CPP_EXTERN_C IL2CPP_METHOD_ATTR bool U3CRotinaVelocidadeU3Ed__11_MoveNext_m0A339F0408D46F7957A91768931ACAB79F97963B (U3CRotinaVelocidadeU3Ed__11_tEDA9B3573CB27A35A4DC91E422BD6BFAF8833693* __this, const RuntimeMethod* method) 
 {
 	static bool s_Il2CppMethodInitialized;
@@ -4505,7 +4588,7 @@ IL_004b:
 		return (bool)0;
 	}
 }
-// Method Definition Index: 71606
+// Method Definition Index: 71614
 IL2CPP_EXTERN_C IL2CPP_METHOD_ATTR RuntimeObject* U3CRotinaVelocidadeU3Ed__11_System_Collections_Generic_IEnumeratorU3CSystem_ObjectU3E_get_Current_mA05662E5706829DCE114DC014CBAC1B3BC27845A (U3CRotinaVelocidadeU3Ed__11_tEDA9B3573CB27A35A4DC91E422BD6BFAF8833693* __this, const RuntimeMethod* method) 
 {
 	{
@@ -4513,7 +4596,7 @@ IL2CPP_EXTERN_C IL2CPP_METHOD_ATTR RuntimeObject* U3CRotinaVelocidadeU3Ed__11_Sy
 		return L_0;
 	}
 }
-// Method Definition Index: 71607
+// Method Definition Index: 71615
 IL2CPP_EXTERN_C IL2CPP_METHOD_ATTR void U3CRotinaVelocidadeU3Ed__11_System_Collections_IEnumerator_Reset_m5B3072FC8F3A6131C404193E216CCAC993129333 (U3CRotinaVelocidadeU3Ed__11_tEDA9B3573CB27A35A4DC91E422BD6BFAF8833693* __this, const RuntimeMethod* method) 
 {
 	{
@@ -4522,7 +4605,7 @@ IL2CPP_EXTERN_C IL2CPP_METHOD_ATTR void U3CRotinaVelocidadeU3Ed__11_System_Colle
 		IL2CPP_RAISE_MANAGED_EXCEPTION(L_0, ((RuntimeMethod*)il2cpp_codegen_initialize_runtime_metadata_inline((uintptr_t*)&U3CRotinaVelocidadeU3Ed__11_System_Collections_IEnumerator_Reset_m5B3072FC8F3A6131C404193E216CCAC993129333_RuntimeMethod_var)));
 	}
 }
-// Method Definition Index: 71608
+// Method Definition Index: 71616
 IL2CPP_EXTERN_C IL2CPP_METHOD_ATTR RuntimeObject* U3CRotinaVelocidadeU3Ed__11_System_Collections_IEnumerator_get_Current_mD5AD76E5BBDBA6058C74204B3FC2EF3FD72C5830 (U3CRotinaVelocidadeU3Ed__11_tEDA9B3573CB27A35A4DC91E422BD6BFAF8833693* __this, const RuntimeMethod* method) 
 {
 	{
@@ -4538,7 +4621,7 @@ IL2CPP_EXTERN_C IL2CPP_METHOD_ATTR RuntimeObject* U3CRotinaVelocidadeU3Ed__11_Sy
 #pragma clang diagnostic ignored "-Winvalid-offsetof"
 #pragma clang diagnostic ignored "-Wunused-variable"
 #endif
-// Method Definition Index: 71609
+// Method Definition Index: 71617
 IL2CPP_EXTERN_C IL2CPP_METHOD_ATTR void Rotator_Update_mEDB0F4729DEB6075BDB3177DB5A90104D8020D68 (Rotator_t9CB1625F0502717B73E19E63A0256F034D3FA223* __this, const RuntimeMethod* method) 
 {
 	{
@@ -4556,7 +4639,7 @@ IL2CPP_EXTERN_C IL2CPP_METHOD_ATTR void Rotator_Update_mEDB0F4729DEB6075BDB3177D
 		return;
 	}
 }
-// Method Definition Index: 71610
+// Method Definition Index: 71618
 IL2CPP_EXTERN_C IL2CPP_METHOD_ATTR void Rotator__ctor_m6DD9F22CD049D079A6246125410EFE63DE76FAF2 (Rotator_t9CB1625F0502717B73E19E63A0256F034D3FA223* __this, const RuntimeMethod* method) 
 {
 	{
@@ -4574,7 +4657,7 @@ IL2CPP_EXTERN_C IL2CPP_METHOD_ATTR void Rotator__ctor_m6DD9F22CD049D079A62461254
 #pragma clang diagnostic ignored "-Winvalid-offsetof"
 #pragma clang diagnostic ignored "-Wunused-variable"
 #endif
-// Method Definition Index: 71611
+// Method Definition Index: 71619
 IL2CPP_EXTERN_C IL2CPP_METHOD_ATTR void SpawnManager_Start_m65C9EA67649948222CFF4FBBF77BE2319D813DAF (SpawnManager_tD38605BF221D4CC849CF709A85499D2B698FD6FC* __this, const RuntimeMethod* method) 
 {
 	static bool s_Il2CppMethodInitialized;
@@ -4638,7 +4721,7 @@ IL_002b:
 		return;
 	}
 }
-// Method Definition Index: 71612
+// Method Definition Index: 71620
 IL2CPP_EXTERN_C IL2CPP_METHOD_ATTR void SpawnManager_TentarSpawnar_m47885E0A52A006B5D32E66D54304D85AD0FFA052 (SpawnManager_tD38605BF221D4CC849CF709A85499D2B698FD6FC* __this, const RuntimeMethod* method) 
 {
 	static bool s_Il2CppMethodInitialized;
@@ -4793,7 +4876,7 @@ IL_0089:
 		return;
 	}
 }
-// Method Definition Index: 71613
+// Method Definition Index: 71621
 IL2CPP_EXTERN_C IL2CPP_METHOD_ATTR void SpawnManager__ctor_m8DD503A0FFE79FA38CF0B7F013E54D24A04D166A (SpawnManager_tD38605BF221D4CC849CF709A85499D2B698FD6FC* __this, const RuntimeMethod* method) 
 {
 	{
@@ -4819,7 +4902,7 @@ IL2CPP_EXTERN_C IL2CPP_METHOD_ATTR void SpawnManager__ctor_m8DD503A0FFE79FA38CF0
 #pragma clang diagnostic ignored "-Winvalid-offsetof"
 #pragma clang diagnostic ignored "-Wunused-variable"
 #endif
-// Method Definition Index: 71614
+// Method Definition Index: 71622
 IL2CPP_EXTERN_C IL2CPP_METHOD_ATTR MonoScriptData_t8F50E352855B96FFFC1D9CB07EACC90C99D73A3E UnitySourceGeneratedAssemblyMonoScriptTypes_v1_Get_mBEB95BEB954BB63E9710BBC7AD5E78C4CB0A0033 (const RuntimeMethod* method) 
 {
 	static bool s_Il2CppMethodInitialized;
@@ -4853,7 +4936,7 @@ IL2CPP_EXTERN_C IL2CPP_METHOD_ATTR MonoScriptData_t8F50E352855B96FFFC1D9CB07EACC
 		return L_6;
 	}
 }
-// Method Definition Index: 71615
+// Method Definition Index: 71623
 IL2CPP_EXTERN_C IL2CPP_METHOD_ATTR void UnitySourceGeneratedAssemblyMonoScriptTypes_v1__ctor_mE70FB23ACC1EA12ABC948AA22C2E78B2D0AA39B1 (UnitySourceGeneratedAssemblyMonoScriptTypes_v1_tC95F24D0C6E6B77389433852BB389F39C692926E* __this, const RuntimeMethod* method) 
 {
 	{
@@ -5021,7 +5104,7 @@ IL2CPP_MANAGED_FORCE_INLINE IL2CPP_METHOD_ATTR void Vector2__ctor_m9525B79969AFF
 		return;
 	}
 }
-// Method Definition Index: 71561
+// Method Definition Index: 71569
 IL2CPP_MANAGED_FORCE_INLINE IL2CPP_METHOD_ATTR void JoystickVirtual_set_VetorInput_m22E77A26791519F5EA8FAB2C0382B68C1C337A66_inline (Vector2_t1FD6F485C871E832B347AB2DC8CBA08B739D8DF7 ___0_value, const RuntimeMethod* method) 
 {
 	static bool s_Il2CppMethodInitialized;
@@ -5037,7 +5120,7 @@ IL2CPP_MANAGED_FORCE_INLINE IL2CPP_METHOD_ATTR void JoystickVirtual_set_VetorInp
 		return;
 	}
 }
-// Method Definition Index: 71560
+// Method Definition Index: 71568
 IL2CPP_MANAGED_FORCE_INLINE IL2CPP_METHOD_ATTR Vector2_t1FD6F485C871E832B347AB2DC8CBA08B739D8DF7 JoystickVirtual_get_VetorInput_mBB52026A1BFFD355BCAB74B00B7227ED7AB9DC2E_inline (const RuntimeMethod* method) 
 {
 	static bool s_Il2CppMethodInitialized;
